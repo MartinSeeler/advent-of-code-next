@@ -1,3 +1,23 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next/core-web-vitals",
+    "hardcore",
+    "hardcore/react",
+    "hardcore/react-testing-library",
+    "hardcore/jest",
+    "hardcore/fp"
+  ],
+  "env": {
+    "browser": true
+  },
+  "overrides": [
+    {
+      "files": ["*.tsx"],
+      "rules": {
+        "import/no-unused-modules": "off",
+        "react/jsx-props-no-spreading": "off"
+      }
+    }
+  ],
+  "ignorePatterns": ["next.config.js"]
 }
