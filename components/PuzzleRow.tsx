@@ -4,12 +4,8 @@ import { Puzzle } from "../lib/types";
 import { classNames } from "../lib/utils";
 
 const PuzzleRow: FC<{ puzzle: Puzzle }> = ({ puzzle }) => (
-  <tr key={`${puzzle.day}-puttle-row`}>
-    <td
-      className={classNames(
-        "whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6 lg:pl-8"
-      )}
-    >
+  <tr>
+    <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm sm:pl-6 lg:pl-8">
       {puzzle.day}. {puzzle.name || "Not yet named"}
     </td>
     <td
