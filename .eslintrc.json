@@ -12,10 +12,24 @@
   },
   "overrides": [
     {
-      "files": ["*.tsx"],
+      "files": ["*.tsx", "*.ts"],
       "rules": {
+        "func-style": ["error", "declaration", { "allowArrowFunctions": true }],
+        "import/extensions": "off",
         "import/no-unused-modules": "off",
-        "react/jsx-props-no-spreading": "off"
+        "import/prefer-default-export": "off",
+        "react/jsx-props-no-spreading": "off",
+        "react/function-component-definition": [
+          "error",
+          {
+            "namedComponents": "arrow-function",
+            "unnamedComponents": "arrow-function"
+          }
+        ],
+        "require-await": "off",
+        "no-magic-numbers": "off",
+        "no-shadow": "off",
+        "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }]
       }
     }
   ],
