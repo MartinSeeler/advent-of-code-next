@@ -18,6 +18,7 @@
         "import/extensions": "off",
         "import/no-unused-modules": "off",
         "import/prefer-default-export": "off",
+        "react/forbid-component-props": "off",
         "react/jsx-props-no-spreading": "off",
         "react/function-component-definition": [
           "error",

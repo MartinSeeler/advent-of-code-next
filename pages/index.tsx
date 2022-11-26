@@ -1,4 +1,4 @@
-import PuzzleRow from "../components/PuzzleRow";
+import PuzzleCard from "../components/PuzzleCard";
 import puzzles from "../lib/puzzles";
 
 const Home = () => (
@@ -22,49 +22,10 @@ const Home = () => (
           </button>
         </div>
       </div>
-      <div className="mt-8 flex flex-col">
-        <div className="-my-2 -mx-4 sm:-mx-6 lg:-mx-8">
-          <div className="inline-block min-w-full py-2 align-middle">
-            <div className="shadow-sm ring-1 ring-black ring-opacity-5">
-              <table className="min-w-full border-separate">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th
-                      className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter sm:pl-6 lg:pl-8"
-                      scope="col"
-                    >
-                      Day
-                    </th>
-
-                    <th
-                      className="sticky top-0 z-10 hidden border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter lg:table-cell"
-                      scope="col"
-                    >
-                      Part 1
-                    </th>
-                    <th
-                      className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 px-3 py-3.5 text-left text-sm font-semibold text-gray-900 backdrop-blur backdrop-filter"
-                      scope="col"
-                    >
-                      Part 2
-                    </th>
-                    <th
-                      className="sticky top-0 z-10 border-b border-gray-300 bg-gray-50 bg-opacity-75 py-3.5 pr-4 pl-3 backdrop-blur backdrop-filter sm:pr-6 lg:pr-8"
-                      scope="col"
-                    >
-                      <span className="sr-only">Run Both</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white">
-                  {puzzles.map((puzzle) => (
-                    <PuzzleRow key={`puzzle-${puzzle.day}`} puzzle={puzzle} />
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+      <div className="mt-8 flex flex-col space-y-6">
+        {puzzles.map((puzzle) => (
+          <PuzzleCard key={`${puzzle.day}-${puzzle.name}`} puzzle={puzzle} />
+        ))}
       </div>
     </div>
   </div>
