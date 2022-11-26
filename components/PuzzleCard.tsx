@@ -1,10 +1,10 @@
 import { FC } from "react";
-import { BoltIcon } from "@heroicons/react/24/outline";
 import { CalendarIcon } from "@heroicons/react/20/solid";
 
 import { Puzzle } from "../lib/types";
 
 import PuzzlePartRow from "./PuzzlePartRow";
+import RunDayButton from "./RunDayButton";
 
 const PuzzleCard: FC<{ puzzle: Puzzle }> = ({ puzzle }) => (
   <div className="overflow-hidden bg-white sm:rounded-lg sm:shadow -mx-4 sm:-mx-6 lg:-mx-8">
@@ -26,22 +26,13 @@ const PuzzleCard: FC<{ puzzle: Puzzle }> = ({ puzzle }) => (
           </div>
         </div>
         <div className="mt-4 flex flex-shrink-0">
-          <button
-            className="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            type="button"
-          >
-            <BoltIcon
-              aria-hidden="true"
-              className="-ml-1 mr-2 h-5 w-5 text-gray-400"
-            />
-            <span>Run Day</span>
-          </button>
+          <RunDayButton puzzleDay={puzzle.day} />
         </div>
       </div>
     </div>
     <ul className="divide-y divide-gray-200">
-      <PuzzlePartRow part={1} />
-      <PuzzlePartRow part={2} />
+      <PuzzlePartRow puzzlePartID={`${puzzle.day}-1`} />
+      <PuzzlePartRow puzzlePartID={`${puzzle.day}-2`} />
     </ul>
   </div>
 );

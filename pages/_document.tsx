@@ -19,7 +19,7 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body className="bg-zinc-100">
+        <body className="bg-zinc-100 font-mono">
           <Main />
           <NextScript />
         </body>

@@ -1,6 +1,8 @@
 # Advent of Code 2022
 
 - Framework: [Next.js](https://nextjs.org/)
+- State Management: [Recoil](https://recoiljs.org/)
+- Icons: [Heroicons](https://heroicons.com/)
 - Deployment: [Vercel](https://vercel.com/)
 - Styling: [Tailwind CSS](https://tailwindcss.com/)
 - Linting: [eslint-config-hardcore](https://github.com/EvgenyOrekhov/eslint-config-hardcore)
@@ -9,9 +11,9 @@
 
 - `pages/` - Next.js pages
 - `components/` - React components
-- `lib/` - 👈 There are the puzzle implementations!
-- `styles/` - Tailwind CSS style`
-- `public/` - Static assets
+- `lib/` - 👈 This is where the puzzles are
+- `styles/` - Tailwind CSS styles
+- `public/` - Static assets (you know, like favicon)
 
 ## Running Locally
 
