@@ -1,4 +1,3 @@
-/* eslint-disable fp/no-class */
 import Document, {
   DocumentContext,
   DocumentInitialProps,

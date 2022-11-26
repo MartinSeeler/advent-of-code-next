@@ -13,6 +13,7 @@ const PuzzlePartTime: FC<WithPuzzlePartID> = ({ puzzlePartID }) => {
     if (status === "queued") {
       reset();
     }
+    return;
   }, [status, reset]);
   return (
     <span className="text-sm text-gray-500">

@@ -5,7 +5,7 @@
 - Icons: [Heroicons](https://heroicons.com/)
 - Deployment: [Vercel](https://vercel.com/)
 - Styling: [Tailwind CSS](https://tailwindcss.com/)
-- Linting: [eslint-config-hardcore](https://github.com/EvgenyOrekhov/eslint-config-hardcore)
+- FP-Linting: [eslint-plugin-fp](https://github.com/jfmengels/eslint-plugin-fp)
 
 ## Overview
 

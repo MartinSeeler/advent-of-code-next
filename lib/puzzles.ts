@@ -15,7 +15,7 @@ export default [
     part1: () =>
       new Promise((resolve, _) => {
         console.log("Hello world");
-        resolve(1337);
+        return resolve(1337);
       }),
     part2: () => new Promise((resolve) => setTimeout(() => resolve(42), 3000)),
   },
