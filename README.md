@@ -11,6 +11,7 @@
 
 - `puzzles/` - 👈 This is where the puzzles are
 - `lib/` - State management and "game" logic, to schedule puzzle execution
+- `template/` - Template generator and template files for the CLI
 - `pages/` - Next.js pages
 - `components/` - React components
 - `styles/` - Tailwind CSS styles
@@ -26,3 +27,15 @@ cd advent-of-code-next
 yarn install
 yarn dev
 ```
+
+Your app should now be running on [localhost:3000](http://localhost:3000/).
+
+## Generating a new puzzle solution
+
+I won't do fancy stuff like logging in to the AoC website and downloading the puzzle input. Instead, I'll just generate a new puzzle boilerplate with the following command:
+
+```bash
+yarn new-day
+```
+
+Enter the day number and the puzzle title and you're good to go. Open the generated file in `puzzles/` and start coding. You can insert your puzzle input in the `input.txt` file and adapt tests in the `solution.test.ts` file.
