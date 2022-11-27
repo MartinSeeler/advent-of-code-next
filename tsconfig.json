@@ -22,6 +22,14 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "txt-loader.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": [
+    "next-env.d.ts",
+    "txt-loader.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "lib/template.ts",
+    "lib/template.ts",
+    "template/template.mjs"
+  ],
   "exclude": ["node_modules"]
 }

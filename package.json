@@ -7,10 +7,12 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "new-puzzle": "node ./template/generate-day.mjs"
   },
   "dependencies": {
     "@heroicons/react": "^2.0.13",
+    "inquirer": "^9.1.4",
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -21,7 +23,8 @@
     "@babel/core": "^7.8.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@types/node": "18.11.9",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
     "autoprefixer": "^10.4.13",

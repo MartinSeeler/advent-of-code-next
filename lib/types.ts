@@ -6,8 +6,8 @@ export interface Puzzle {
   day: string;
   name: string | null;
   inputFile?: string;
-  part1: SolvePuzzleFn;
-  part2: SolvePuzzleFn;
+  solvePart1: SolvePuzzleFn;
+  solvePart2: SolvePuzzleFn;
 }
 
 export type PuzzlePartStatus =

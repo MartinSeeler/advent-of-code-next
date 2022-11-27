@@ -7,7 +7,7 @@ import {
   puzzlePartTimeState,
   puzzlePartErrorState,
 } from "./atoms";
-import puzzles from "@/puzzles/all_puzzles";
+import puzzles from "@/puzzles/index";
 import { Puzzle } from "./types";
 
 export const usePuzzleManager = () => {
@@ -46,8 +46,8 @@ export const usePuzzleManager = () => {
         updatePuzzlePartTime(nextPuzzlePartId, null);
         const startTime = Date.now();
         (puzzlePartId === "1"
-          ? puzzleToSolveNext.part1
-          : puzzleToSolveNext.part2)(puzzleToSolveNext.inputFile || "")
+          ? puzzleToSolveNext.solvePart1
+          : puzzleToSolveNext.solvePart2)(puzzleToSolveNext.inputFile || "")
           .then((result) => {
             updatePuzzlePartResult(nextPuzzlePartId, result);
             updatePuzzlePartError(nextPuzzlePartId, null);

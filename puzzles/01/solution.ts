@@ -6,14 +6,14 @@ export default {
   name: "Sonar Sweep",
   inputFile,
 
-  part1: async (input: string) => {
+  solvePart1: async (input: string) => {
     const lines = input.split("\n").map((line) => parseInt(line, 10));
     return lines.reduce((acc, curr, i, arr) => {
       if (i === 0) return acc;
       return curr > arr[i - 1] ? acc + 1 : acc;
     }, 0);
   },
-  part2: async (input: string) => {
+  solvePart2: async (input: string) => {
     const lines = input.split("\n").map((line) => parseInt(line, 10));
     return lines.reduce((acc, curr, i, arr) => {
       if (i < 2) return acc;

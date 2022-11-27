@@ -2,7 +2,7 @@ import PuzzleCard from "@/components/PuzzleCard";
 import RunAllButton from "@/components/RunAllButton";
 import { PuzzleContext } from "@/lib/context";
 import { usePuzzleManager } from "@/lib/usePuzzleManager";
-import puzzles from "@/puzzles/all_puzzles";
+import puzzles from "@/puzzles/index";
 
 const Home = () => {
   usePuzzleManager();

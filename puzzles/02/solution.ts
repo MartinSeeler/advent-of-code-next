@@ -31,8 +31,8 @@ export default {
   day: "02",
   name: "Dive!",
   inputFile,
-  part1: solvePart1,
-  part2: async (input: string) => {
+  solvePart1: solvePart1,
+  solvePart2: async (input: string) => {
     return 0;
   },
 } as Puzzle;
