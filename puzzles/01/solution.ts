@@ -1,4 +1,4 @@
-import { Puzzle } from "../../lib/types";
+import { Puzzle } from "@/lib/types";
 import inputFile from "./input.txt";
 
 export default {

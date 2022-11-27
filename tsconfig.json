@@ -2,6 +2,13 @@
   "compilerOptions": {
     "target": "ES2022",
     "lib": ["dom", "dom.iterable", "esnext", "ES2022"],
+    "baseUrl": ".",
+    "paths": {
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/puzzles/*": ["puzzles/*"],
+      "@/styles/*": ["styles/*"]
+    },
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,

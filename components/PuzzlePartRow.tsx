@@ -1,17 +1,17 @@
 import { FC, useContext } from "react";
-import PuzzlePartStatus from "./PuzzlePartStatus";
-import PuzzlePartTime from "./PuzzlePartTime";
-import PuzzlePartResult from "./PuzzlePartResult";
-import RunPartButton from "./RunPartButton";
-import { PuzzlePartIDContext } from "../lib/context";
+import PuzzlePartStatus from "@/components/PuzzlePartStatus";
+import PuzzlePartTime from "@/components/PuzzlePartTime";
+import PuzzlePartResult from "@/components/PuzzlePartResult";
+import RunPartButton from "@/components/RunPartButton";
+import { PuzzlePartIDContext } from "@/lib/context";
 
 const PuzzlePartRow: FC = () => {
   const puzzlePartID = useContext(PuzzlePartIDContext);
   return (
     <li>
-      <div className="bg-white px-4 py-4 sm:px-6 lg:px-8 grid grid-cols-4 items-center">
+      <div className="grid items-center grid-cols-4 px-4 py-4 bg-white sm:px-6 lg:px-8">
         <div className="flex items-center gap-x-3">
-          <span className="font-medium text-sm">
+          <span className="text-sm font-medium">
             Part {puzzlePartID.split("-")[1]}
           </span>
           <PuzzlePartStatus />

@@ -7,7 +7,7 @@ import {
   puzzlePartTimeState,
   puzzlePartErrorState,
 } from "./atoms";
-import puzzles from "../puzzles/all_puzzles";
+import puzzles from "@/puzzles/all_puzzles";
 import { Puzzle } from "./types";
 
 export const usePuzzleManager = () => {

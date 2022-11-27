@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { puzzlePartStatusState, queuedPuzzlePartsState } from "../lib/atoms";
 import { BoltIcon } from "@heroicons/react/24/outline";
-import { PuzzlePartIDContext } from "../lib/context";
+import { puzzlePartStatusState, queuedPuzzlePartsState } from "@/lib/atoms";
+import { PuzzlePartIDContext } from "@/lib/context";
 
 const RunPartButton: FC = () => {
   const puzzlePartID = useContext(PuzzlePartIDContext);
@@ -20,7 +20,7 @@ const RunPartButton: FC = () => {
         ]);
       }}
     >
-      <BoltIcon aria-hidden="true" className="mr-2 h-4 w-4 text-gray-400" />
+      <BoltIcon aria-hidden="true" className="w-4 h-4 mr-2 text-gray-400" />
       <span>Run</span>
     </button>
   );

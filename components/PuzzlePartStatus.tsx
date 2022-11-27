@@ -6,8 +6,8 @@ import {
 } from "@heroicons/react/24/outline";
 import { FC, useContext } from "react";
 import { useRecoilValue } from "recoil";
-import { puzzlePartStatusState } from "../lib/atoms";
-import { PuzzlePartIDContext } from "../lib/context";
+import { puzzlePartStatusState } from "@/lib/atoms";
+import { PuzzlePartIDContext } from "@/lib/context";
 
 const PuzzlePartStatus: FC = () => {
   const puzzlePartID = useContext(PuzzlePartIDContext);

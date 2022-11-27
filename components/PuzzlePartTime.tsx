@@ -1,8 +1,8 @@
 import { FC, useContext, useEffect } from "react";
 import { useRecoilValue, waitForAll } from "recoil";
 import { useElapsedTime } from "use-elapsed-time";
-import { puzzlePartStatusState, puzzlePartTimeState } from "../lib/atoms";
-import { PuzzlePartIDContext } from "../lib/context";
+import { puzzlePartStatusState, puzzlePartTimeState } from "@/lib/atoms";
+import { PuzzlePartIDContext } from "@/lib/context";
 
 const PuzzlePartTime: FC = () => {
   const puzzlePartID = useContext(PuzzlePartIDContext);

@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { useRecoilState } from "recoil";
-import { queuedPuzzlePartsState } from "../lib/atoms";
+import { queuedPuzzlePartsState } from "@/lib/atoms";
 
 const RunAllButton: FC<{ allDays: string[] }> = ({ allDays }) => {
   const allPuzzlePartIDs: string[] = allDays.flatMap((day) => [
@@ -12,7 +12,7 @@ const RunAllButton: FC<{ allDays: string[] }> = ({ allDays }) => {
   );
   return (
     <button
-      className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
+      className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed"
       type="button"
       disabled={allPuzzlePartIDs.every((id) => queuedPuzzleParts.includes(id))}
       onClick={() => {

@@ -1,13 +1,13 @@
-import PuzzleCard from "../components/PuzzleCard";
-import RunAllButton from "../components/RunAllButton";
-import { PuzzleContext } from "../lib/context";
-import { usePuzzleManager } from "../lib/usePuzzleManager";
-import puzzles from "../puzzles/all_puzzles";
+import PuzzleCard from "@/components/PuzzleCard";
+import RunAllButton from "@/components/RunAllButton";
+import { PuzzleContext } from "@/lib/context";
+import { usePuzzleManager } from "@/lib/usePuzzleManager";
+import puzzles from "@/puzzles/all_puzzles";
 
 const Home = () => {
   usePuzzleManager();
   return (
-    <div className="max-w-4xl mx-auto pt-6 md:pt-12 lg:pt-16">
+    <div className="max-w-4xl pt-6 mx-auto md:pt-12 lg:pt-16">
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
@@ -22,7 +22,7 @@ const Home = () => {
             <RunAllButton allDays={puzzles.map((x) => x.day)} />
           </div>
         </div>
-        <div className="mt-8 flex flex-col space-y-6">
+        <div className="flex flex-col mt-8 space-y-6">
           {puzzles.map((puzzle) => (
             <PuzzleContext.Provider value={puzzle} key={`card-${puzzle.day}`}>
               <PuzzleCard />
