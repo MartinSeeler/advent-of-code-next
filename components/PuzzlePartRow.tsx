@@ -12,7 +12,8 @@ const PuzzlePartRow: FC = () => {
       <div className="grid items-center grid-cols-4 px-4 py-4 bg-white sm:px-6 lg:px-8">
         <div className="flex items-center gap-x-3">
           <span className="text-sm font-medium">
-            Part {puzzlePartID.split("-")[1]}
+            <span className="max-sm:hidden">Part </span>
+            {puzzlePartID.split("-")[1]}
           </span>
           <PuzzlePartStatus />
         </div>
