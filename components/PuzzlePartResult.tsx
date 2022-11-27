@@ -9,7 +9,7 @@ const PuzzlePartResult: FC = () => {
 
   return (
     <span className="text-sm text-gray-500">
-      {puzzlePartResult || "No Result"}
+      {puzzlePartResult === null ? "No Result" : puzzlePartResult}
     </span>
   );
 };
