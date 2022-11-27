@@ -1,9 +1,18 @@
 import { FC, Fragment, useContext } from "react";
-import { ChevronDownIcon, PencilSquareIcon } from "@heroicons/react/24/outline";
+import {
+  ArrowTopRightOnSquareIcon,
+  ChevronDownIcon,
+  PencilSquareIcon,
+} from "@heroicons/react/24/outline";
 import { PuzzleContext } from "@/lib/context";
 import { Menu, Transition } from "@headlessui/react";
 import RunDayButton from "./RunDayButton";
-import DropdownLink from "./DropdownLink";
+import Link from "next/link";
+
+// eslint-disable-next-line fp/no-rest-parameters
+function classNames(...classes: string[]): string {
+  return classes.filter(Boolean).join(" ");
+}
 
 const PuzzleCardButtonGroup: FC = () => {
   const { day } = useContext(PuzzleContext);
@@ -38,23 +47,41 @@ const PuzzleCardButtonGroup: FC = () => {
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
-                  <DropdownLink
-                    active={active}
+                  <Link
                     href={`https://adventofcode.com/2021/day/${parseInt(
                       day,
                       10
                     )}`}
-                    title="Puzzle Description"
-                  />
+                    target="_blank"
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900"
+                    )}
+                  >
+                    Puzzle Description
+                    <ArrowTopRightOnSquareIcon
+                      aria-hidden="true"
+                      className="w-4 h-4"
+                    />
+                  </Link>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <DropdownLink
-                    active={active}
+                  <Link
                     href={`https://github.com/MartinSeeler/advent-of-code-next/tree/main/puzzles/${day}/solution.ts`}
-                    title="Source Code"
-                  />
+                    target="_blank"
+                    className={classNames(
+                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
+                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900"
+                    )}
+                  >
+                    Source Code
+                    <ArrowTopRightOnSquareIcon
+                      aria-hidden="true"
+                      className="w-4 h-4"
+                    />
+                  </Link>
                 )}
               </Menu.Item>
             </div>
