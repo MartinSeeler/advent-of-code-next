@@ -1,0 +1,11 @@
+{
+  "plugins": [
+    [
+      "babel-plugin-inline-import",
+      {
+        "extensions": [".txt"]
+      }
+    ]
+  ],
+  "presets": ["next/babel"]
+}

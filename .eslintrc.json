@@ -12,5 +12,5 @@
     "fp/no-unused-expression": "off",
     "fp/no-nil": "off"
   },
-  "ignorePatterns": ["*.d.ts", "_document.tsx", "_app.tsx"]
+  "ignorePatterns": ["*.d.ts", "_document.tsx", "_app.tsx", "next.config.js"]
 }
