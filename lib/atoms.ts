@@ -1,12 +1,12 @@
 import { PuzzlePartStatus } from "./types";
 import { atom, atomFamily, selectorFamily } from "recoil";
 
-export const puzzlePartError = atomFamily<Error | null, string>({
+export const puzzlePartErrorState = atomFamily<Error | null, string>({
   key: "puzzlePartError",
   default: null,
 });
 
-export const puzzlePartRunning = atomFamily<boolean, string>({
+export const puzzlePartRunningState = atomFamily<boolean, string>({
   key: "puzzlePartRunning",
   default: false,
 });
@@ -30,7 +30,7 @@ export const puzzlePartStatusState = selectorFamily<PuzzlePartStatus, string>({
       if (!isQueued) {
         const result = get(puzzlePartResultState(puzzlePartID));
         if (result === null) {
-          const error = get(puzzlePartError(puzzlePartID));
+          const error = get(puzzlePartErrorState(puzzlePartID));
           return error === null ? "idle" : "error";
         }
         return "success";

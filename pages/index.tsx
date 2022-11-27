@@ -1,91 +1,10 @@
-import { useEffect } from "react";
-import { useRecoilCallback, useRecoilState } from "recoil";
 import PuzzleCard from "../components/PuzzleCard";
 import RunAllButton from "../components/RunAllButton";
-import {
-  currentlyRunningPuzzlePartState,
-  puzzlePartError as puzzlePartErrorState,
-  puzzlePartResultState,
-  puzzlePartTimeState,
-  queuedPuzzlePartsState,
-} from "../lib/atoms";
+import { usePuzzleManager } from "../lib/usePuzzleManager";
 import puzzles from "../puzzles/all_puzzles";
-import { Puzzle } from "../lib/types";
 
 const Home = () => {
-  const [queuedPuzzleParts, setQueuedPuzzleParts] = useRecoilState(
-    queuedPuzzlePartsState
-  );
-  const [currentlyRunningPuzzlePart, setCurrentlyRunningPuzzlePart] =
-    useRecoilState(currentlyRunningPuzzlePartState);
-  const updatePuzzlePartResult = useRecoilCallback(
-    ({ set }) =>
-      (puzzlePartId: string, result: number | null) => {
-        return set(puzzlePartResultState(puzzlePartId), result);
-      }
-  );
-  const updatePuzzlePartError = useRecoilCallback(
-    ({ set }) =>
-      (puzzlePartId: string, error: Error | null) => {
-        return set(puzzlePartErrorState(puzzlePartId), error);
-      }
-  );
-  const updatePuzzlePartTime = useRecoilCallback(
-    ({ set }) =>
-      (puzzlePartId: string, duration: number | null) => {
-        return set(puzzlePartTimeState(puzzlePartId), duration);
-      }
-  );
-  useEffect(() => {
-    if (queuedPuzzleParts.length > 0 && !currentlyRunningPuzzlePart) {
-      const nextPuzzlePartId = queuedPuzzleParts[0];
-      setCurrentlyRunningPuzzlePart(nextPuzzlePartId);
-      const [puzzleId, puzzlePartId] = nextPuzzlePartId.split("-");
-      const puzzleToSolveNext: Puzzle | undefined = puzzles.find(
-        (x) => x.day === puzzleId
-      );
-      if (puzzleToSolveNext) {
-        updatePuzzlePartTime(nextPuzzlePartId, null);
-        const startTime = Date.now();
-        (puzzlePartId === "1"
-          ? puzzleToSolveNext.part1
-          : puzzleToSolveNext.part2)(puzzleToSolveNext.inputFile || "")
-          .then((result) => {
-            updatePuzzlePartResult(nextPuzzlePartId, result);
-            updatePuzzlePartError(nextPuzzlePartId, null);
-          })
-          .catch((error) => {
-            updatePuzzlePartResult(nextPuzzlePartId, null);
-            updatePuzzlePartError(nextPuzzlePartId, error);
-            console.error(error);
-          })
-          .finally(() => {
-            const endTime = Date.now();
-            updatePuzzlePartTime(
-              nextPuzzlePartId,
-              (endTime - startTime) / 1000.0
-            );
-            setQueuedPuzzleParts((oldQueuedPuzzleParts) =>
-              oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePartId)
-            );
-            setCurrentlyRunningPuzzlePart(null);
-          });
-      } else {
-        console.error(`Puzzle ${puzzleId} not found`);
-        setQueuedPuzzleParts((oldQueuedPuzzleParts) =>
-          oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePartId)
-        );
-        setCurrentlyRunningPuzzlePart(null);
-      }
-    }
-  }, [
-    currentlyRunningPuzzlePart,
-    queuedPuzzleParts,
-    setCurrentlyRunningPuzzlePart,
-    setQueuedPuzzleParts,
-    updatePuzzlePartError,
-    updatePuzzlePartResult,
-  ]);
+  usePuzzleManager();
   return (
     <div className="max-w-4xl mx-auto pt-6 md:pt-12 lg:pt-16">
       <div className="px-4 sm:px-6 lg:px-8">

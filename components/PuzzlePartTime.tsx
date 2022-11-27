@@ -1,12 +1,16 @@
 import { FC, useEffect } from "react";
-import { useRecoilValue } from "recoil";
+import { useRecoilValue, waitForAll } from "recoil";
 import { useElapsedTime } from "use-elapsed-time";
 import { puzzlePartStatusState, puzzlePartTimeState } from "../lib/atoms";
 import { WithPuzzlePartID } from "../lib/types";
 
 const PuzzlePartTime: FC<WithPuzzlePartID> = ({ puzzlePartID }) => {
-  const status = useRecoilValue(puzzlePartStatusState(puzzlePartID));
-  const time = useRecoilValue(puzzlePartTimeState(puzzlePartID));
+  const [status, time] = useRecoilValue(
+    waitForAll([
+      puzzlePartStatusState(puzzlePartID),
+      puzzlePartTimeState(puzzlePartID),
+    ])
+  );
   const { elapsedTime, reset } = useElapsedTime({
     isPlaying: status === "running",
   });
