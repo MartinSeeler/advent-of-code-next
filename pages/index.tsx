@@ -1,5 +1,6 @@
 import PuzzleCard from "../components/PuzzleCard";
 import RunAllButton from "../components/RunAllButton";
+import { PuzzleContext } from "../lib/context";
 import { usePuzzleManager } from "../lib/usePuzzleManager";
 import puzzles from "../puzzles/all_puzzles";
 
@@ -23,7 +24,9 @@ const Home = () => {
         </div>
         <div className="mt-8 flex flex-col space-y-6">
           {puzzles.map((puzzle) => (
-            <PuzzleCard key={`card-${puzzle.day}`} puzzle={puzzle} />
+            <PuzzleContext.Provider value={puzzle} key={`card-${puzzle.day}`}>
+              <PuzzleCard />
+            </PuzzleContext.Provider>
           ))}
         </div>
       </div>

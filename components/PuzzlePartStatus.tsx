@@ -4,12 +4,13 @@ import {
   RectangleStackIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useRecoilValue } from "recoil";
 import { puzzlePartStatusState } from "../lib/atoms";
-import { WithPuzzlePartID } from "../lib/types";
+import { PuzzlePartIDContext } from "../lib/context";
 
-const PuzzlePartStatus: FC<WithPuzzlePartID> = ({ puzzlePartID }) => {
+const PuzzlePartStatus: FC = () => {
+  const puzzlePartID = useContext(PuzzlePartIDContext);
   const status = useRecoilValue(puzzlePartStatusState(puzzlePartID));
   switch (status) {
     case "success":

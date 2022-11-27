@@ -16,7 +16,3 @@ export type PuzzlePartStatus =
   | "running"
   | "error"
   | "success";
-
-export type WithPuzzlePartID = {
-  puzzlePartID: string;
-};

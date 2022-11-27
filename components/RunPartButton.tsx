@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { puzzlePartStatusState, queuedPuzzlePartsState } from "../lib/atoms";
 import { BoltIcon } from "@heroicons/react/24/outline";
-import { WithPuzzlePartID } from "../lib/types";
+import { PuzzlePartIDContext } from "../lib/context";
 
-const RunPartButton: FC<WithPuzzlePartID> = ({ puzzlePartID }) => {
+const RunPartButton: FC = () => {
+  const puzzlePartID = useContext(PuzzlePartIDContext);
   const status = useRecoilValue(puzzlePartStatusState(puzzlePartID));
   const setQueuedPuzzleParts = useSetRecoilState(queuedPuzzlePartsState);
   return (

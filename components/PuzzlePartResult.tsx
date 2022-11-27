@@ -1,9 +1,10 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 import { useRecoilValue } from "recoil";
 import { puzzlePartResultState } from "../lib/atoms";
-import { WithPuzzlePartID } from "../lib/types";
+import { PuzzlePartIDContext } from "../lib/context";
 
-const PuzzlePartResult: FC<WithPuzzlePartID> = ({ puzzlePartID }) => {
+const PuzzlePartResult: FC = () => {
+  const puzzlePartID = useContext(PuzzlePartIDContext);
   const puzzlePartResult = useRecoilValue(puzzlePartResultState(puzzlePartID));
 
   return (
