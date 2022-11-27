@@ -13,15 +13,15 @@ const PuzzleCard: FC<{ puzzle: Puzzle }> = ({ puzzle }) => (
         <div className="mt-4">
           <div className="flex items-center">
             <div className="">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
-                {puzzle.name}
+              <h3 className="font-medium text-gray-900">
+                Day {puzzle.day} - {puzzle.name}
               </h3>
-              <div className="flex items-center pt-1">
+              {/* <div className="flex items-center pt-1">
                 <CalendarIcon className="h-4 w-4 text-gray-400" />
                 <p className="text-sm text-gray-500 pl-2">
                   {puzzle.day.padStart(2, "0")}.12.2022
                 </p>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

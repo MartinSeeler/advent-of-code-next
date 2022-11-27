@@ -6,9 +6,10 @@ import {
   currentlyRunningPuzzlePartState,
   puzzlePartError as puzzlePartErrorState,
   puzzlePartResultState,
+  puzzlePartTimeState,
   queuedPuzzlePartsState,
 } from "../lib/atoms";
-import puzzles from "../lib/puzzles";
+import puzzles from "../puzzles/all_puzzles";
 import { Puzzle } from "../lib/types";
 
 const Home = () => {
@@ -29,6 +30,12 @@ const Home = () => {
         return set(puzzlePartErrorState(puzzlePartId), error);
       }
   );
+  const updatePuzzlePartTime = useRecoilCallback(
+    ({ set }) =>
+      (puzzlePartId: string, duration: number | null) => {
+        return set(puzzlePartTimeState(puzzlePartId), duration);
+      }
+  );
   useEffect(() => {
     if (queuedPuzzleParts.length > 0 && !currentlyRunningPuzzlePart) {
       const nextPuzzlePartId = queuedPuzzleParts[0];
@@ -38,11 +45,12 @@ const Home = () => {
         (x) => x.day === puzzleId
       );
       if (puzzleToSolveNext) {
+        updatePuzzlePartTime(nextPuzzlePartId, null);
+        const startTime = Date.now();
         (puzzlePartId === "1"
           ? puzzleToSolveNext.part1
-          : puzzleToSolveNext.part2)("")
+          : puzzleToSolveNext.part2)(puzzleToSolveNext.inputFile || "")
           .then((result) => {
-            console.log(result);
             updatePuzzlePartResult(nextPuzzlePartId, result);
             updatePuzzlePartError(nextPuzzlePartId, null);
           })
@@ -52,6 +60,11 @@ const Home = () => {
             console.error(error);
           })
           .finally(() => {
+            const endTime = Date.now();
+            updatePuzzlePartTime(
+              nextPuzzlePartId,
+              (endTime - startTime) / 1000.0
+            );
             setQueuedPuzzleParts((oldQueuedPuzzleParts) =>
               oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePartId)
             );

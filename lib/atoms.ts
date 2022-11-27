@@ -16,6 +16,11 @@ export const puzzlePartResultState = atomFamily<number | null, string>({
   default: null,
 });
 
+export const puzzlePartTimeState = atomFamily<number | null, string>({
+  key: "puzzlePartTime",
+  default: null,
+});
+
 export const puzzlePartStatusState = selectorFamily<PuzzlePartStatus, string>({
   key: "puzzlePartState",
   get:

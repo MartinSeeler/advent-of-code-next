@@ -9,9 +9,10 @@
 
 ## Overview
 
+- `puzzles/` - 👈 This is where the puzzles are
 - `pages/` - Next.js pages
 - `components/` - React components
-- `lib/` - 👈 This is where the puzzles are
+- `lib/` - State management, "game" logic, etc.
 - `styles/` - Tailwind CSS styles
 - `public/` - Static assets (you know, like favicon)
 
