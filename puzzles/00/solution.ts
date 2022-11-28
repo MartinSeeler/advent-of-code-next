@@ -1,5 +1,5 @@
 import { Puzzle } from "@/lib/types";
-import inputFile from "./input.txt";
+import input from "./input.txt";
 
 async function solvePart1(input: string): Promise<number> {
   const seconds = Math.floor(Math.random() * 10);
@@ -22,7 +22,7 @@ async function solvePart2(input: string): Promise<number> {
 export default {
   day: "00",
   name: "UI Demo Day",
-  inputFile,
+  input,
   solvePart1,
   solvePart2,
 } as Puzzle;

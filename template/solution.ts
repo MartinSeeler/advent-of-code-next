@@ -14,7 +14,7 @@ async function solvePart2(input: string): Promise<number> {
 export default {
   day: "[[DAY]]",
   name: "[[TITLE]]",
-  inputFile,
+  input: inputFile,
   solvePart1,
   solvePart2,
 } as Puzzle;

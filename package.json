@@ -11,16 +11,19 @@
     "new-day": "node ./template/generate-day.mjs"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
     "inquirer": "^9.1.4",
     "next": "13.0.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.39.6",
     "recoil": "^0.7.6",
     "use-elapsed-time": "^3.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.8.0",
+    "@tailwindcss/forms": "^0.5.3",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/inquirer": "^9.0.3",

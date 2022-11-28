@@ -1,10 +1,10 @@
 import { Puzzle } from "@/lib/types";
-import inputFile from "./input.txt";
+import input from "./input.txt";
 
 export default {
   day: "01",
   name: "Sonar Sweep",
-  inputFile,
+  input,
 
   solvePart1: async (input: string) => {
     const lines = input.split("\n").map((line) => parseInt(line, 10));

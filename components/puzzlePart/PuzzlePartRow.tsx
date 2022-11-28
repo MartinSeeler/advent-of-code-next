@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
-import PuzzlePartStatus from "@/components/PuzzlePartStatus";
-import PuzzlePartTime from "@/components/PuzzlePartTime";
-import PuzzlePartResult from "@/components/PuzzlePartResult";
-import RunPartButton from "@/components/RunPartButton";
+import PuzzlePartStatus from "@/components/puzzlePart/PuzzlePartStatus";
+import PuzzlePartTime from "@/components/puzzlePart/PuzzlePartTime";
+import PuzzlePartResult from "@/components/puzzlePart/PuzzlePartResult";
+import RunPartButton from "@/components/buttons/RunPartButton";
 import { PuzzlePartIDContext } from "@/lib/context";
 
 const PuzzlePartRow: FC = () => {

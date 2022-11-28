@@ -4,6 +4,7 @@ import { Puzzle } from "./types";
 const emptyDefaultPuzzle: Puzzle = {
   name: "Unknown",
   day: "00",
+  input: "",
   solvePart1: () => Promise.reject("Not implemented"),
   solvePart2: () => Promise.reject("Not implemented"),
 };

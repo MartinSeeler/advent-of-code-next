@@ -1,5 +1,5 @@
 import { Puzzle } from "@/lib/types";
-import inputFile from "./input.txt";
+import input from "./input.txt";
 
 type Instruction = [string, number];
 type PositionChange = [number, number];
@@ -30,7 +30,7 @@ async function solvePart1(input: string): Promise<number> {
 export default {
   day: "02",
   name: "Dive!",
-  inputFile,
+  input,
   solvePart1: solvePart1,
   solvePart2: async (input: string) => {
     return 0;

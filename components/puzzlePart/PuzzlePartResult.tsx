@@ -9,7 +9,9 @@ const PuzzlePartResult: FC = () => {
 
   return (
     <span className="text-sm text-gray-500">
-      {puzzlePartResult === null ? "No Result" : puzzlePartResult}
+      {puzzlePartResult === null || isNaN(puzzlePartResult)
+        ? "No Result"
+        : puzzlePartResult}
     </span>
   );
 };

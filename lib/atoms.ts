@@ -1,6 +1,11 @@
 import { PuzzlePartStatus } from "./types";
 import { atom, atomFamily, selectorFamily } from "recoil";
 
+export const customPuzzleInputState = atomFamily<string | null, string>({
+  key: "customPuzzleInputState",
+  default: null,
+});
+
 export const puzzlePartErrorState = atomFamily<Error | null, string>({
   key: "puzzlePartError",
   default: null,

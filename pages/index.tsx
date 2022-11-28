@@ -1,5 +1,5 @@
 import PuzzleCard from "@/components/PuzzleCard";
-import RunAllButton from "@/components/RunAllButton";
+import RunAllButton from "@/components/buttons/RunAllButton";
 import { PuzzleContext } from "@/lib/context";
 import { usePuzzleManager } from "@/lib/usePuzzleManager";
 import puzzles from "@/puzzles/index";
@@ -22,7 +22,7 @@ const Home = () => {
             <RunAllButton allDays={puzzles.map((x) => x.day)} />
           </div>
         </header>
-        <main className="flex flex-col my-8 space-y-6">
+        <main className="flex flex-col my-8 space-y-8">
           {puzzles.map((puzzle) => (
             <PuzzleContext.Provider value={puzzle} key={`card-${puzzle.day}`}>
               <PuzzleCard />

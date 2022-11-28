@@ -1,14 +1,20 @@
 import { useEffect } from "react";
-import { useRecoilState, useRecoilCallback } from "recoil";
+import {
+  useRecoilState,
+  useRecoilCallback,
+  useRecoilSnapshot,
+  useRecoilTransactionObserver_UNSTABLE,
+} from "recoil";
 import {
   queuedPuzzlePartsState,
   currentlyRunningPuzzlePartState,
   puzzlePartResultState,
   puzzlePartTimeState,
   puzzlePartErrorState,
+  customPuzzleInputState,
 } from "./atoms";
 import puzzles from "@/puzzles/index";
-import { Puzzle } from "./types";
+import { Puzzle, SolvePuzzleFn } from "./types";
 
 export const usePuzzleManager = () => {
   const [queuedPuzzleParts, setQueuedPuzzleParts] = useRecoilState(
@@ -16,24 +22,21 @@ export const usePuzzleManager = () => {
   );
   const [currentlyRunningPuzzlePart, setCurrentlyRunningPuzzlePart] =
     useRecoilState(currentlyRunningPuzzlePartState);
-  const updatePuzzlePartResult = useRecoilCallback(
+  const updatePuzzleResult = useRecoilCallback(
     ({ set }) =>
-      (puzzlePartId: string, result: number | null) => {
-        return set(puzzlePartResultState(puzzlePartId), result);
+      (puzzlePartId: string, result: number | null, error: Error | null) => {
+        set(puzzlePartErrorState(puzzlePartId), error);
+        set(puzzlePartResultState(puzzlePartId), result);
       }
   );
-  const updatePuzzlePartError = useRecoilCallback(
-    ({ set }) =>
-      (puzzlePartId: string, error: Error | null) => {
-        return set(puzzlePartErrorState(puzzlePartId), error);
-      }
-  );
+  const snapshot = useRecoilSnapshot();
   const updatePuzzlePartTime = useRecoilCallback(
     ({ set }) =>
       (puzzlePartId: string, duration: number | null) => {
         return set(puzzlePartTimeState(puzzlePartId), duration);
       }
   );
+
   useEffect(() => {
     if (queuedPuzzleParts.length > 0 && !currentlyRunningPuzzlePart) {
       const nextPuzzlePartId = queuedPuzzleParts[0];
@@ -44,18 +47,31 @@ export const usePuzzleManager = () => {
       );
       if (puzzleToSolveNext) {
         updatePuzzlePartTime(nextPuzzlePartId, null);
+        const solveFn: SolvePuzzleFn =
+          puzzlePartId === "1"
+            ? puzzleToSolveNext.solvePart1
+            : puzzleToSolveNext.solvePart2;
         const startTime = Date.now();
-        (puzzlePartId === "1"
-          ? puzzleToSolveNext.solvePart1
-          : puzzleToSolveNext.solvePart2)(puzzleToSolveNext.inputFile || "")
+        snapshot
+          .getPromise(customPuzzleInputState(puzzleToSolveNext.day))
+          .then(async (customInput) => {
+            const res = await solveFn(customInput || puzzleToSolveNext.input);
+            if (isNaN(res)) {
+              // eslint-disable-next-line fp/no-throw
+              throw new Error("Received NaN result");
+            }
+            if (res === null) {
+              // eslint-disable-next-line fp/no-throw
+              throw new Error("Received null result");
+            }
+            return res;
+          })
           .then((result) => {
-            updatePuzzlePartResult(nextPuzzlePartId, result);
-            updatePuzzlePartError(nextPuzzlePartId, null);
+            updatePuzzleResult(nextPuzzlePartId, result, null);
           })
           .catch((error) => {
-            updatePuzzlePartResult(nextPuzzlePartId, null);
-            updatePuzzlePartError(nextPuzzlePartId, error);
-            console.error(error);
+            updatePuzzleResult(nextPuzzlePartId, null, error);
+            console.error("solveFN Failed", error);
           })
           .finally(() => {
             const endTime = Date.now();
@@ -81,8 +97,8 @@ export const usePuzzleManager = () => {
     queuedPuzzleParts,
     setCurrentlyRunningPuzzlePart,
     setQueuedPuzzleParts,
-    updatePuzzlePartError,
-    updatePuzzlePartResult,
+    updatePuzzleResult,
     updatePuzzlePartTime,
+    snapshot,
   ]);
 };

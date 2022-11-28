@@ -1,9 +1,9 @@
 import { FC, useContext } from "react";
 
-import PuzzlePartRow from "@/components/PuzzlePartRow";
-import RunDayButton from "@/components/RunDayButton";
+import PuzzlePartRow from "@/components/puzzlePart/PuzzlePartRow";
+import RunDayButton from "@/components/buttons/RunDayButton";
 import { PuzzleContext, PuzzlePartIDContext } from "@/lib/context";
-import PuzzleCardButtonGroup from "./PuzzleCardButtonGroup";
+import PuzzleCardButtonGroup from "./buttons/PuzzleCardButtonGroup";
 
 const PuzzleCard: FC = () => {
   const { day, name } = useContext(PuzzleContext);
