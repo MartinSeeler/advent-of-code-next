@@ -22,7 +22,7 @@ const PuzzleCardButtonGroup: FC = () => {
       <EditInputButton />
       <RunDayButton />
       <Menu as="div" className="relative block -ml-px">
-        <Menu.Button className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-1 focus:ring-indigo-500">
+        <Menu.Button className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500">
           <span className="sr-only">Open options</span>
           <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
         </Menu.Button>
