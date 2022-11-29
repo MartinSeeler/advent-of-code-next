@@ -106,7 +106,7 @@ const EditInputButton = () => {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative w-full max-w-lg px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:max-w-sm sm:my-8 sm:p-6">
+                <Dialog.Panel className="relative w-full max-w-lg px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl dark:border-green-400 dark:border dark:border-dashed dark:bg-zinc-800 sm:max-w-sm sm:my-8 sm:p-6">
                   <form
                     onSubmit={onSubmit}
                     onReset={() => {
@@ -118,13 +118,13 @@ const EditInputButton = () => {
                         <div className="flex justify-between">
                           <Dialog.Title
                             as="h3"
-                            className="text-lg font-medium leading-6 text-gray-900"
+                            className="text-lg font-medium leading-6 text-gray-900 dark:text-green-400"
                           >
                             Edit Puzzle Input
                           </Dialog.Title>
                           <button
                             type="button"
-                            className="text-gray-400 bg-white rounded-md hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                            className="text-gray-400 bg-white rounded-md dark:text-zinc-500 dark:bg-zinc-800 hover:text-gray-500 dark:hover:text-green-400 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 dark:ring-offset-zinc-800 focus:ring-offset-2"
                             onClick={closeModal}
                           >
                             <span className="sr-only">Close</span>
@@ -136,7 +136,7 @@ const EditInputButton = () => {
                             {...register("input")}
                             rows={10}
                             defaultValue={input}
-                            className="block w-full border-gray-300 rounded-md shadow-sm resize-none focus:border-green-500 focus:ring-green-500 sm:text-sm"
+                            className="block w-full border-gray-300 rounded-md shadow-sm resize-none dark:selection:bg-green-400 dark:selection:text-zinc-700 dark:bg-zinc-500/10 dark:text-zinc-300 dark:border-zinc-500/10 focus:border-green-500 focus:ring-green-500 sm:text-sm"
                             placeholder="Paste your puzzle input here"
                           />
                         </div>
@@ -145,18 +145,18 @@ const EditInputButton = () => {
                     <div className="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse sm:justify-between">
                       <button
                         type="submit"
-                        className="inline-flex items-center justify-center w-full px-4 py-2 text-base font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                        className="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-green-600 border border-transparent rounded-md shadow-sm dark:text-zinc-900 dark:bg-green-400 hover:bg-green-700 dark:hover:bg-green-300 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-green-400 focus:ring-offset-2 sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed dark:ring-offset-zinc-900"
                       >
                         Save and Run
                         <PlayIcon
                           aria-hidden="true"
-                          className="w-4 h-4 ml-1.5 -mr-1 text-white"
+                          className="w-4 h-4 ml-1.5 -mr-1 text-white dark:text-zinc-900"
                         />
                       </button>
                       <button
                         type="reset"
                         disabled={input === watch("input")}
-                        className="inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 sm:mt-0 sm:w-auto sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="relative inline-flex items-center rounded-md px-4 py-1.5 btn-defaults group"
                       >
                         Reset
                       </button>
