@@ -74,12 +74,12 @@ const EditInputButton = () => {
       <button
         type="button"
         onClick={openModal}
-        className="relative inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-l-md hover:bg-gray-50 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+        className="relative inline-flex items-center px-4 py-2 text-sm group rounded-l-md btn-defaults"
       >
         Edit Puzzle Input
         <PencilSquareIcon
           aria-hidden="true"
-          className="w-4 h-4 ml-2 text-gray-400"
+          className="w-4 h-4 ml-2 -mr-1 text-gray-400 dark:text-green-400 dark:group-hover:text-zinc-800 dark:group-focus:text-zinc-800"
         />
       </button>
       <Transition appear show={isOpen} as={Fragment}>
@@ -93,7 +93,7 @@ const EditInputButton = () => {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-50" />
+            <div className="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-50 dark:bg-green-400/10" />
           </Transition.Child>
           <div className="fixed inset-0 z-10 overflow-y-auto">
             <div className="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">

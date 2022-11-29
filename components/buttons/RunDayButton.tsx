@@ -24,12 +24,12 @@ const RunDayButton: FC = () => {
         queuedPuzzleParts.includes(`${day}-2`)
       }
       onClick={onRunDay}
-      className="relative inline-flex items-center px-4 py-2 -ml-px text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="relative inline-flex items-center px-4 py-2 -ml-px btn-defaults group"
     >
       Run Day
       <PlayIcon
         aria-hidden="true"
-        className="w-4 h-4 ml-2 -mr-1 text-gray-400"
+        className="w-4 h-4 ml-2 -mr-1 text-gray-400 dark:text-green-400 dark:group-hover:text-zinc-800 dark:group-focus:text-zinc-800"
       />
     </button>
   );

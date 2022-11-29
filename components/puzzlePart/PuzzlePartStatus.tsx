@@ -15,16 +15,16 @@ const PuzzlePartStatus: FC = () => {
   switch (status) {
     case "success":
       return (
-        <div className="inline-flex items-center rounded-full bg-green-100 px-3 py-0.5 text-sm font-medium text-green-800">
-          <CheckIcon className="sm:mr-1.5 h-4 w-4 text-green-800" />
-          <span className="max-sm:hidden">Done</span>
+        <div className="text-green-800 bg-green-100 dark:bg-transparent dark:border-green-400 dark:text-green-400 badge-defaults">
+          <CheckIcon className="sm:mr-1.5 -ml-1 h-4 w-4 text-green-800 dark:text-green-400" />
+          <span className="max-sm:hidden">Solved</span>
         </div>
       );
     case "error":
       return (
-        <div className="inline-flex items-center rounded-full bg-red-100 px-3 py-0.5 text-sm font-medium text-red-800">
+        <div className="text-red-800 bg-red-100 dark:bg-transparent dark:border-red-400 dark:text-red-400 badge-defaults">
           <XMarkIcon
-            className="sm:mr-1.5 h-4 w-4 text-red-800"
+            className="sm:mr-1.5 -ml-1 h-4 w-4 text-red-800 dark:text-red-400"
             aria-hidden="true"
           />
           <span className="max-sm:hidden">Failed</span>
@@ -32,27 +32,27 @@ const PuzzlePartStatus: FC = () => {
       );
     case "running":
       return (
-        <div className="inline-flex items-center rounded-full bg-yellow-100 px-3 py-0.5 text-sm font-medium text-yellow-800">
+        <div className="text-yellow-800 bg-yellow-100 dark:bg-transparent dark:border-yellow-400 dark:text-yellow-400 badge-defaults">
           <ArrowPathIcon
             aria-hidden="true"
-            className="sm:mr-1.5 h-4 w-4 text-yellow-800 animate-spin"
+            className="sm:mr-1.5 -ml-1 h-4 w-4 text-yellow-800 dark:text-yellow-400 animate-spin"
           />
           <span className="max-sm:hidden">Running</span>
         </div>
       );
     case "queued":
       return (
-        <div className="inline-flex items-center rounded-full bg-sky-100 px-3 py-0.5 text-sm font-medium text-sky-800">
+        <div className="text-sky-800 bg-sky-100 dark:bg-transparent dark:border-sky-400 dark:text-sky-400 badge-defaults">
           <RectangleStackIcon
             aria-hidden="true"
-            className="sm:mr-1.5 h-4 w-4 text-sky-800"
+            className="sm:mr-1.5 -ml-1 h-4 w-4 text-sky-800 dark:text-sky-400"
           />
           <span className="max-sm:hidden">Queued</span>
         </div>
       );
     default:
       return (
-        <span className="inline-flex items-center rounded-full bg-gray-100 px-3 py-0.5 text-sm font-medium text-gray-700">
+        <span className="inline-flex items-center rounded-full bg-gray-100 dark:bg-zinc-400 px-3 py-0.5 text-sm font-medium text-gray-700 dark:text-zinc-800">
           Idle
         </span>
       );

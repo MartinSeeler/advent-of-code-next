@@ -8,7 +8,7 @@ const PuzzlePartResult: FC = () => {
   const puzzlePartResult = useRecoilValue(puzzlePartResultState(puzzlePartID));
 
   return (
-    <span className="text-sm text-gray-500">
+    <span className="text-sm text-gray-500 dark:text-zinc-300">
       {puzzlePartResult === null || isNaN(puzzlePartResult)
         ? "No Result"
         : puzzlePartResult}

@@ -22,7 +22,7 @@ const PuzzlePartTime: FC = () => {
     return;
   }, [status, reset]);
   return (
-    <span className="text-sm text-gray-500">
+    <span className="text-sm text-gray-500 dark:text-zinc-300">
       {(time || elapsedTime)
         .toLocaleString(undefined, {
           minimumIntegerDigits: 2,

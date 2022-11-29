@@ -10,7 +10,7 @@ const RunPartButton: FC = () => {
   const setQueuedPuzzleParts = useSetRecoilState(queuedPuzzlePartsState);
   return (
     <button
-      className="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-1.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed"
+      className="relative inline-flex items-center rounded-md px-4 py-1.5 btn-defaults group"
       type="button"
       disabled={status === "queued" || status === "running"}
       onClick={() => {
@@ -23,7 +23,7 @@ const RunPartButton: FC = () => {
       <span>Run</span>
       <PlayIcon
         aria-hidden="true"
-        className="w-4 h-4 ml-2 -mr-1 text-gray-400"
+        className="w-4 h-4 ml-2 -mr-1 text-gray-400 dark:text-green-400 dark:group-hover:text-zinc-800 dark:group-focus:text-zinc-800"
       />
     </button>
   );

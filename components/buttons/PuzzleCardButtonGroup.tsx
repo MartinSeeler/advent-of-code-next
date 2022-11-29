@@ -22,7 +22,7 @@ const PuzzleCardButtonGroup: FC = () => {
       <EditInputButton />
       <RunDayButton />
       <Menu as="div" className="relative block -ml-px">
-        <Menu.Button className="relative inline-flex items-center px-2 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50 focus:z-10 focus:border-green-500 focus:outline-none focus:ring-1 focus:ring-green-500">
+        <Menu.Button className="relative inline-flex items-center px-2 py-2 btn-defaults rounded-r-md">
           <span className="sr-only">Open options</span>
           <ChevronDownIcon className="w-5 h-5" aria-hidden="true" />
         </Menu.Button>
@@ -35,7 +35,7 @@ const PuzzleCardButtonGroup: FC = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 w-56 mt-2 -mr-1 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 z-10 w-56 mt-2 -mr-1 origin-top-right bg-white rounded-md shadow-lg dark:bg-zinc-800 ring-1 ring-black dark:ring-green-400 ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
@@ -46,8 +46,10 @@ const PuzzleCardButtonGroup: FC = () => {
                     )}`}
                     target="_blank"
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900"
+                      active
+                        ? "bg-gray-100 text-gray-900 dark:bg-green-400 dark:text-zinc-800"
+                        : "text-gray-700 dark:text-green-400",
+                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-green-400 dark:hover:text-zinc-800"
                     )}
                   >
                     Puzzle Description
@@ -64,8 +66,10 @@ const PuzzleCardButtonGroup: FC = () => {
                     href={`https://github.com/MartinSeeler/advent-of-code-next/tree/main/puzzles/${day}/solution.ts`}
                     target="_blank"
                     className={classNames(
-                      active ? "bg-gray-100 text-gray-900" : "text-gray-700",
-                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900"
+                      active
+                        ? "bg-gray-100 text-gray-900 dark:bg-green-400 dark:text-zinc-800"
+                        : "text-gray-700 dark:text-green-400",
+                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-green-400 dark:hover:text-zinc-800"
                     )}
                   >
                     Source Code

@@ -8,13 +8,13 @@ import PuzzleCardButtonGroup from "./buttons/PuzzleCardButtonGroup";
 const PuzzleCard: FC = () => {
   const { day, name } = useContext(PuzzleContext);
   return (
-    <div className="-mx-4 overflow-hidden bg-white sm:rounded-lg sm:shadow sm:-mx-6 lg:-mx-8">
-      <div className="px-4 py-5 bg-white border-b border-gray-200 sm:px-6 lg:px-8">
+    <div className="-mx-4 overflow-hidden sm:rounded-lg sm:shadow sm:-mx-6 lg:-mx-8">
+      <div className="px-4 py-5 bg-white border-b border-gray-200 border-dotted dark:border-green-500/50 dark:bg-zinc-800 sm:px-6 lg:px-8">
         <div className="flex justify-between -mt-4 sm:items-center max-sm:flex-col">
           <div className="mt-4">
             <div className="flex items-center">
               <div className="">
-                <h3 className="font-medium text-gray-900">
+                <h3 className="font-medium text-gray-900 dark:text-green-400">
                   Day {day} - {name}
                 </h3>
               </div>
@@ -25,7 +25,7 @@ const PuzzleCard: FC = () => {
           </div>
         </div>
       </div>
-      <ul className="divide-y divide-gray-200">
+      <ul className="divide-y divide-gray-200 dark:divide-green-500/50 dark:divide-dotted">
         <PuzzlePartIDContext.Provider value={`${day}-1`}>
           <PuzzlePartRow />
         </PuzzlePartIDContext.Provider>

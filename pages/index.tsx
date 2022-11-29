@@ -12,10 +12,10 @@ const Home = () => {
       <div className="px-4 sm:px-6 lg:px-8">
         <header className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
-            <h1 className="text-xl font-semibold text-gray-900">
+            <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
               Advent of Code 2022
             </h1>
-            <p className="mt-2 text-sm text-gray-700">
+            <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
               These are my solutions to the Advent of Code 2022 puzzles.
             </p>
           </div>
