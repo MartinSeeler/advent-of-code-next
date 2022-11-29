@@ -3,6 +3,7 @@ import RunAllButton from "@/components/buttons/RunAllButton";
 import { PuzzleContext } from "@/lib/context";
 import { usePuzzleManager } from "@/lib/usePuzzleManager";
 import puzzles from "@/puzzles/index";
+import Footer from "@/components/Footer";
 
 const Home = () => {
   usePuzzleManager();
@@ -29,6 +30,7 @@ const Home = () => {
             </PuzzleContext.Provider>
           ))}
         </main>
+        <Footer />
       </div>
     </div>
   );
