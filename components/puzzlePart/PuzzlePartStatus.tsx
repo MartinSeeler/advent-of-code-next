@@ -52,7 +52,7 @@ const PuzzlePartStatus: FC = () => {
       );
     default:
       return (
-        <span className="inline-flex items-center rounded-full bg-gray-100 dark:bg-zinc-400 px-3 py-0.5 text-sm font-medium text-gray-700 dark:text-zinc-800">
+        <span className="text-zinc-800 bg-zinc-100 dark:bg-transparent dark:border-zinc-400 dark:text-zinc-400 badge-defaults">
           Idle
         </span>
       );
