@@ -39,12 +39,13 @@ const PuzzleCardButtonGroup: FC = () => {
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
-                  <Link
+                  <a
                     href={`https://adventofcode.com/2021/day/${parseInt(
                       day,
                       10
                     )}`}
                     target="_blank"
+                    rel="noreferrer"
                     className={classNames(
                       active
                         ? "bg-gray-100 text-gray-900 dark:bg-green-400 dark:text-zinc-800"
@@ -57,14 +58,15 @@ const PuzzleCardButtonGroup: FC = () => {
                       aria-hidden="true"
                       className="w-4 h-4"
                     />
-                  </Link>
+                  </a>
                 )}
               </Menu.Item>
               <Menu.Item>
                 {({ active }) => (
-                  <Link
+                  <a
                     href={`https://github.com/MartinSeeler/advent-of-code-next/tree/main/puzzles/${day}/solution.ts`}
                     target="_blank"
+                    rel="noreferrer"
                     className={classNames(
                       active
                         ? "bg-gray-100 text-gray-900 dark:bg-green-400 dark:text-zinc-800"
@@ -77,7 +79,7 @@ const PuzzleCardButtonGroup: FC = () => {
                       aria-hidden="true"
                       className="w-4 h-4"
                     />
-                  </Link>
+                  </a>
                 )}
               </Menu.Item>
             </div>
