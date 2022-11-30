@@ -10,4 +10,8 @@
   .badge-defaults {
     @apply inline-flex items-center rounded-full dark:border dark:border-dashed px-3 py-0.5 text-sm font-medium;
   }
+
+  .a-defaults {
+    @apply underline underline-offset-4 hover:text-green-500 decoration-dotted focus:outline-none focus:text-green-500 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500;
+  }
 }

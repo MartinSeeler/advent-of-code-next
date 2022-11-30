@@ -15,8 +15,53 @@ const Home = () => {
             <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
               Advent of Code 2022
             </h1>
-            <p className="mt-2 text-sm text-gray-700 dark:text-gray-300">
-              These are my solutions to the Advent of Code 2022 puzzles.
+            <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
+              These are{" "}
+              <a
+                href="https://github.com/MartinSeeler/advent-of-code-next"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                className="a-defaults"
+              >
+                my solutions
+              </a>{" "}
+              for the{" "}
+              <a
+                href="https://adventofcode.com/2022"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                className="a-defaults"
+              >
+                Advent of Code 2022
+              </a>{" "}
+              puzzles, written in TypeScript, using{" "}
+              <a
+                href="https://nextjs.org/"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                className="a-defaults"
+              >
+                Next.js
+              </a>
+              ,{" "}
+              <a
+                href="https://tailwindui.com/"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                className="a-defaults"
+              >
+                Tailwind CSS
+              </a>{" "}
+              and{" "}
+              <a
+                href="https://recoiljs.org/"
+                target={"_blank"}
+                rel="noopener noreferrer"
+                className="a-defaults"
+              >
+                Recoil
+              </a>
+              .
             </p>
           </div>
           <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
