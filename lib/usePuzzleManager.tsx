@@ -39,14 +39,14 @@ export const usePuzzleManager = () => {
 
   useEffect(() => {
     if (queuedPuzzleParts.length > 0 && !currentlyRunningPuzzlePart) {
-      const nextPuzzlePartId = queuedPuzzleParts[0];
-      setCurrentlyRunningPuzzlePart(nextPuzzlePartId);
-      const [puzzleId, puzzlePartId] = nextPuzzlePartId.split("-");
+      const nextPuzzlePart = queuedPuzzleParts[0];
+      setCurrentlyRunningPuzzlePart(nextPuzzlePart);
+      const [puzzleDay, puzzlePartId] = nextPuzzlePart.split("-");
       const puzzleToSolveNext: Puzzle | undefined = puzzles.find(
-        (x) => x.day === puzzleId
+        (x) => x.day === puzzleDay
       );
       if (puzzleToSolveNext) {
-        updatePuzzlePartTime(nextPuzzlePartId, null);
+        updatePuzzlePartTime(nextPuzzlePart, null);
         const solveFn: SolvePuzzleFn =
           puzzlePartId === "1"
             ? puzzleToSolveNext.solvePart1
@@ -67,27 +67,30 @@ export const usePuzzleManager = () => {
             return res;
           })
           .then((result) => {
-            updatePuzzleResult(nextPuzzlePartId, result, null);
+            updatePuzzleResult(nextPuzzlePart, result, null);
           })
           .catch((error) => {
-            updatePuzzleResult(nextPuzzlePartId, null, error);
-            console.error("solveFN Failed", error);
+            updatePuzzleResult(nextPuzzlePart, null, error);
+            console.error(
+              `Solution for Day ${puzzleDay} Part ${puzzlePartId} Failed with`,
+              error
+            );
           })
           .finally(() => {
             const endTime = Date.now();
             updatePuzzlePartTime(
-              nextPuzzlePartId,
+              nextPuzzlePart,
               (endTime - startTime) / 1000.0
             );
             setQueuedPuzzleParts((oldQueuedPuzzleParts) =>
-              oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePartId)
+              oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePart)
             );
             setCurrentlyRunningPuzzlePart(null);
           });
       } else {
-        console.error(`Puzzle ${puzzleId} not found`);
+        console.error(`Puzzle ${puzzleDay} not found`);
         setQueuedPuzzleParts((oldQueuedPuzzleParts) =>
-          oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePartId)
+          oldQueuedPuzzleParts.filter((x) => x !== nextPuzzlePart)
         );
         setCurrentlyRunningPuzzlePart(null);
       }
