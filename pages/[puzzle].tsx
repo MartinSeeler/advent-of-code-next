@@ -44,6 +44,10 @@ const PuzzlePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
                 name="description"
                 content={`Solution by Martin Seeler for Advent of Code 2022 day ${puzzle.day} - ${puzzle.name}, written in Typescript, using Next.js, Tailwind and Recoil.`}
               />
+              <meta
+                property="og:image"
+                content={`/api/og?title=Day ${puzzle.day} - ${puzzle.name}`}
+              />
             </Head>
             <div className="sm:flex-auto">
               <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">

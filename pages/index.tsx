@@ -18,6 +18,7 @@ const Home = () => {
               name="description"
               content="Solutions by Martin Seeler for Advent of Code 2022, written in Typescript, using Next.js, Tailwind and Recoil."
             />
+            <meta property="og:image" content="/api/og" />
           </Head>
           <div className="sm:flex-auto">
             <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
