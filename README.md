@@ -11,7 +11,7 @@
 
 ## Overview
 
-- [`puzzles/`](tree/main/puzzles) - 👈 This is where the puzzles are
+- [`puzzles/`](puzzles) - 👈 This is where the puzzles are
 - `lib/` - State management and "game" logic, to schedule puzzle execution
 - `template/` - Template generator and template files for the CLI
 - `pages/` - Next.js pages
