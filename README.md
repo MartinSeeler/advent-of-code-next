@@ -4,11 +4,11 @@
 
 - Framework: [Next.js](https://nextjs.org/)
 - State Management: [Recoil](https://recoiljs.org/)
-- Icons: [Heroicons](https://heroicons.com/)
 - Deployment: [Vercel](https://vercel.com/)
-- Styling: [Tailwind CSS](https://tailwindcss.com/)
-- FP-Linting: [eslint-plugin-fp](https://github.com/jfmengels/eslint-plugin-fp)
 - Analytics: [Plausible](https://plausible.io/) with [next-plausible](https://github.com/4lejandrito/next-plausible)
+- FP-Linting: [eslint-plugin-fp](https://github.com/jfmengels/eslint-plugin-fp)
+- Styling: [Tailwind CSS](https://tailwindcss.com/)
+- Icons: [Heroicons](https://heroicons.com/)
 - Font: [VT323](https://fonts.google.com/specimen/VT323/tester?category=Monospace&preview.text=Advent%20of%20Code&preview.text_type=custom)
 
 ## Overview
