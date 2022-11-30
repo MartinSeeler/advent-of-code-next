@@ -12,6 +12,7 @@ import {
 } from "next";
 import { slugifyPuzzle } from "@/lib/utils";
 import ShowAllButton from "@/components/buttons/ShowAllButton";
+import Head from "next/head";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = puzzles.map((puzzle) => ({
@@ -37,30 +38,39 @@ const PuzzlePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
       <div className="px-4 sm:px-6 lg:px-8">
         <PuzzleContext.Provider value={puzzle}>
           <header className="sm:flex sm:items-center">
+            <Head>
+              <title>Advent of Code 2022 - Solution for Day {puzzle.day}</title>
+              <meta
+                name="description"
+                content={`Solution by Martin Seeler for Advent of Code 2022 day ${puzzle.day} - ${puzzle.name}, written in Typescript, using Next.js, Tailwind and Recoil.`}
+              />
+            </Head>
             <div className="sm:flex-auto">
               <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
                 Advent of Code 2022 - Day {puzzle.day}
               </h1>
               <p className="max-w-xl mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
-                These are{" "}
+                This is{" "}
                 <a
-                  href="https://github.com/MartinSeeler/advent-of-code-next"
+                  href={`https://github.com/MartinSeeler/advent-of-code-next/blob/main/puzzles/${puzzle.day}/solution.ts`}
                   target={"_blank"}
                   rel="noopener noreferrer"
                   className="a-defaults"
                 >
-                  my solutions
+                  my solution
                 </a>{" "}
                 for the{" "}
                 <a
-                  href="https://adventofcode.com/2022"
+                  href={`https://adventofcode.com/2022/day/${parseInt(
+                    puzzle.day
+                  )}`}
                   target={"_blank"}
                   rel="noopener noreferrer"
                   className="a-defaults"
                 >
-                  Advent of Code 2022
+                  Advent of Code 2022 - Day {puzzle.day}
                 </a>{" "}
-                puzzles, written in TypeScript, using{" "}
+                puzzle, written in TypeScript, using{" "}
                 <a
                   href="https://nextjs.org/"
                   target={"_blank"}

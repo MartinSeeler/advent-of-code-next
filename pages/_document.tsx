@@ -17,7 +17,10 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
-        <Head />
+        <Head>
+          <meta charSet="utf-8" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
         <body className="font-mono bg-zinc-100 dark:bg-zinc-900">
           <Main />
           <NextScript />

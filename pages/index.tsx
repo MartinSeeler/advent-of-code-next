@@ -4,6 +4,7 @@ import { PuzzleContext } from "@/lib/context";
 import { usePuzzleManager } from "@/lib/usePuzzleManager";
 import puzzles from "@/puzzles/index";
 import Footer from "@/components/Footer";
+import Head from "next/head";
 
 const Home = () => {
   usePuzzleManager();
@@ -11,6 +12,13 @@ const Home = () => {
     <div className="max-w-4xl pt-6 mx-auto md:pt-12 lg:pt-16">
       <div className="px-4 sm:px-6 lg:px-8">
         <header className="sm:flex sm:items-center">
+          <Head>
+            <title>Advent of Code 2022 - Solutions</title>
+            <meta
+              name="description"
+              content="Solutions by Martin Seeler for Advent of Code 2022, written in Typescript, using Next.js, Tailwind and Recoil."
+            />
+          </Head>
           <div className="sm:flex-auto">
             <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
               Advent of Code 2022
