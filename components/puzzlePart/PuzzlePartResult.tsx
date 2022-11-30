@@ -9,7 +9,7 @@ const PuzzlePartResult: FC = () => {
   const puzzlePartStatus = useRecoilValue(puzzlePartStatusState(puzzlePartID));
 
   return (
-    <span className="text-sm text-gray-500 dark:text-zinc-300">
+    <span className="text-sm text-zinc-300">
       {puzzlePartStatus === "queued" || puzzlePartStatus === "running"
         ? "..."
         : puzzlePartResult === null || isNaN(puzzlePartResult)

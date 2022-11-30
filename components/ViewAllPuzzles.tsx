@@ -12,10 +12,10 @@ const AllPuzzles = () => {
       <div className="px-4 sm:px-6 lg:px-8">
         <header className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
-            <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
+            <h1 className="text-xl font-semibold text-green-400">
               Advent of Code 2022
             </h1>
-            <p className="max-w-xl mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
+            <p className="max-w-xl mt-2 text-sm leading-6 text-zinc-300">
               These are{" "}
               <a
                 href="https://github.com/MartinSeeler/advent-of-code-next"

@@ -9,8 +9,8 @@ const PuzzlePartRow: FC = () => {
   const puzzlePartID = useContext(PuzzlePartIDContext);
   return (
     <li>
-      <div className="grid items-center grid-cols-4 px-4 py-4 bg-white dark:bg-zinc-800 sm:px-6 lg:px-8">
-        <div className="flex items-center gap-x-3 dark:text-zinc-300">
+      <div className="grid items-center grid-cols-4 px-4 py-4 bg-zinc-800 sm:px-6 lg:px-8">
+        <div className="flex items-center gap-x-3 text-zinc-300">
           <span className="text-sm font-medium">
             <span className="max-sm:hidden">Part </span>
             {puzzlePartID.split("-")[1]}

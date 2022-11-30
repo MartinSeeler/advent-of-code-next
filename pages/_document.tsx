@@ -21,7 +21,7 @@ class MyDocument extends Document {
           <meta charSet="utf-8" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <body className="font-vt323 bg-zinc-100 dark:bg-zinc-900">
+        <body className="font-vt323 bg-zinc-900">
           <Main />
           <NextScript />
         </body>

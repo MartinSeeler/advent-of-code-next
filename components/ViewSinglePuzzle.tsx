@@ -15,10 +15,10 @@ const ViewSinglePuzzle: FC<{ puzzleDay: string }> = ({ puzzleDay }) => {
         <PuzzleContext.Provider value={puzzle}>
           <header className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
+              <h1 className="text-xl font-semibold text-green-400">
                 Advent of Code 2022 - Day {puzzle.day}
               </h1>
-              <p className="max-w-xl mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
+              <p className="max-w-xl mt-2 text-sm leading-6 text-zinc-300">
                 This is{" "}
                 <a
                   href={`https://github.com/MartinSeeler/advent-of-code-next/blob/main/puzzles/${puzzle.day}/solution.ts`}

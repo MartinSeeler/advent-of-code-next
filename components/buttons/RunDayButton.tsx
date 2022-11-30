@@ -29,7 +29,7 @@ const RunDayButton: FC = () => {
       Run Day
       <PlayIcon
         aria-hidden="true"
-        className="w-4 h-4 ml-2 -mr-1 text-gray-400 dark:text-green-400 dark:group-hover:text-zinc-800 dark:group-focus:text-zinc-800"
+        className="w-4 h-4 ml-2 -mr-1 text-green-400 group-hover:text-zinc-800 group-focus:text-zinc-800"
       />
     </button>
   );

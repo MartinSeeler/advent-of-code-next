@@ -35,7 +35,7 @@ const PuzzleCardButtonGroup: FC = () => {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0 z-10 w-56 mt-2 -mr-1 origin-top-right bg-white rounded-md shadow-lg dark:bg-zinc-800 ring-1 ring-black dark:ring-green-400 ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 z-10 w-56 mt-2 -mr-1 origin-top-right border border-green-400 rounded-md shadow-lg bg-zinc-800 ring-1 ring-green-400 ring-opacity-5 focus:outline-none">
             <div className="py-1">
               <Menu.Item>
                 {({ active }) => (
@@ -47,10 +47,8 @@ const PuzzleCardButtonGroup: FC = () => {
                     target="_blank"
                     rel="noreferrer"
                     className={classNames(
-                      active
-                        ? "bg-gray-100 text-gray-900 dark:bg-green-400 dark:text-zinc-800"
-                        : "text-gray-700 dark:text-green-400",
-                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-green-400 dark:hover:text-zinc-800"
+                      active ? "bg-green-400 text-zinc-800" : "text-green-400",
+                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-green-400 hover:text-zinc-800"
                     )}
                   >
                     Puzzle Description
@@ -68,10 +66,8 @@ const PuzzleCardButtonGroup: FC = () => {
                     target="_blank"
                     rel="noreferrer"
                     className={classNames(
-                      active
-                        ? "bg-gray-100 text-gray-900 dark:bg-green-400 dark:text-zinc-800"
-                        : "text-gray-700 dark:text-green-400",
-                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-green-400 dark:hover:text-zinc-800"
+                      active ? "bg-green-400 text-zinc-800" : "text-green-400",
+                      "flex items-center justify-between px-4 py-2 text-sm hover:bg-green-400 hover:text-zinc-800"
                     )}
                   >
                     Source Code
