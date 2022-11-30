@@ -15,7 +15,7 @@ const Home = () => {
             <h1 className="text-xl font-semibold text-gray-900 dark:text-green-400">
               Advent of Code 2022
             </h1>
-            <p className="mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
+            <p className="max-w-xl mt-2 text-sm leading-6 text-gray-700 dark:text-gray-300">
               These are{" "}
               <a
                 href="https://github.com/MartinSeeler/advent-of-code-next"
