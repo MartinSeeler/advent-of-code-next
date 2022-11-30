@@ -1,3 +1,5 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -5,7 +7,17 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        vt323: ["VT323", ...defaultTheme.fontFamily.mono],
+      },
+      fontSize: {
+        sm: ["20px", "20px"],
+        base: ["24px", "24px"],
+        lg: ["28px", "28px"],
+        xl: ["48px", "32px"],
+      },
+    },
   },
   plugins: [require("@tailwindcss/forms")],
 };

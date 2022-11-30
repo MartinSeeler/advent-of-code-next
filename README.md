@@ -6,10 +6,11 @@
 - Deployment: [Vercel](https://vercel.com/)
 - Styling: [Tailwind CSS](https://tailwindcss.com/)
 - FP-Linting: [eslint-plugin-fp](https://github.com/jfmengels/eslint-plugin-fp)
+- Analytics: [Plausible](https://plausible.io/) with [next-plausible](https://github.com/4lejandrito/next-plausible)
 
 ## Overview
 
-- `puzzles/` - 👈 This is where the puzzles are
+- [`puzzles/`](tree/main/puzzles) - 👈 This is where the puzzles are
 - `lib/` - State management and "game" logic, to schedule puzzle execution
 - `template/` - Template generator and template files for the CLI
 - `pages/` - Next.js pages
@@ -30,7 +31,7 @@ yarn dev
 
 Your app should now be running on [localhost:3000](http://localhost:3000/).
 
-## Generating a new puzzle solution
+## Prepare New Solution
 
 I won't do fancy stuff like logging in to the AoC website and downloading the puzzle input. Instead, I'll just generate a new puzzle boilerplate with the following command:
 

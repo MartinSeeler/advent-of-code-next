@@ -5,7 +5,7 @@ import RunAllButton from "./buttons/RunAllButton";
 import Footer from "./Footer";
 import PuzzleCard from "./PuzzleCard";
 
-const ViewAllPuzzles = () => {
+const AllPuzzles = () => {
   usePuzzleManager();
   return (
     <div className="max-w-4xl pt-6 mx-auto md:pt-12 lg:pt-16">
@@ -80,4 +80,4 @@ const ViewAllPuzzles = () => {
     </div>
   );
 };
-export default ViewAllPuzzles;
+export default AllPuzzles;
