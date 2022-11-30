@@ -12,6 +12,6 @@
   }
 
   .a-defaults {
-    @apply underline underline-offset-4 hover:text-green-500 decoration-dotted focus:outline-none focus:text-green-500 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-green-500;
+    @apply underline underline-offset-4 hover:text-green-500 decoration-dotted focus:outline-none focus:text-green-500 rounded-md focus-visible:ring-2 focus-visible:ring-offset-2 dark:ring-offset-transparent focus-visible:ring-green-500;
   }
 }
