@@ -46,7 +46,9 @@ const PuzzlePage: NextPage<InferGetStaticPropsType<typeof getStaticProps>> = ({
               />
               <meta
                 property="og:image"
-                content={`/api/og?title=Day ${puzzle.day} - ${puzzle.name}`}
+                content={`https://advent-of-code-next.vercel.app/api/og?title=${encodeURIComponent(
+                  `Day ${puzzle.day} - ${puzzle.name}`
+                )}`}
               />
             </Head>
             <div className="sm:flex-auto">
