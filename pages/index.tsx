@@ -1,4 +1,3 @@
-import { usePuzzleManager } from "@/lib/usePuzzleManager";
 import dynamic from "next/dynamic";
 import Head from "next/head";
 const ViewAllPuzzles = dynamic(() => import("@/components/ViewAllPuzzles"), {
@@ -6,7 +5,6 @@ const ViewAllPuzzles = dynamic(() => import("@/components/ViewAllPuzzles"), {
 });
 
 const Home = () => {
-  usePuzzleManager();
   return (
     <>
       <Head>
