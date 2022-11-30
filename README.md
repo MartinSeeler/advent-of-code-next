@@ -7,6 +7,7 @@
 - Styling: [Tailwind CSS](https://tailwindcss.com/)
 - FP-Linting: [eslint-plugin-fp](https://github.com/jfmengels/eslint-plugin-fp)
 - Analytics: [Plausible](https://plausible.io/) with [next-plausible](https://github.com/4lejandrito/next-plausible)
+- Font: [VT323](https://fonts.google.com/specimen/VT323/tester?category=Monospace&preview.text=Advent%20of%20Code&preview.text_type=custom)
 
 ## Overview
 
