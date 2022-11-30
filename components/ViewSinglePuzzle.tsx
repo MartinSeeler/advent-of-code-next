@@ -15,7 +15,7 @@ const ViewSinglePuzzle: FC<{ puzzleDay: string }> = ({ puzzleDay }) => {
         <PuzzleContext.Provider value={puzzle}>
           <header className="sm:flex sm:items-center">
             <div className="sm:flex-auto">
-              <h1 className="text-xl font-semibold text-green-400">
+              <h1 className="text-xl font-semibold text-green-400 md:text-2xl">
                 Advent of Code 2022 - Day {puzzle.day}
               </h1>
               <p className="max-w-xl mt-2 text-sm leading-6 text-zinc-300">
