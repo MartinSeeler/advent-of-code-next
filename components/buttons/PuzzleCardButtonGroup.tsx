@@ -40,7 +40,7 @@ const PuzzleCardButtonGroup: FC = () => {
               <Menu.Item>
                 {({ active }) => (
                   <a
-                    href={`https://adventofcode.com/2021/day/${parseInt(
+                    href={`https://adventofcode.com/2022/day/${parseInt(
                       day,
                       10
                     )}`}
