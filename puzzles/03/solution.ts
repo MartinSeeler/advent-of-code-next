@@ -8,6 +8,7 @@ import {
   split,
   pipe,
   trim,
+  __,
 } from "ramda";
 import inputFile from "./input.txt";
 
@@ -16,8 +17,11 @@ const parseLines = pipe(split("\n"), map(trim));
 const charScore = (c: string) =>
   "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".indexOf(c) + 1;
 
-const intersectAll = <T>(x: T[][]): T[] =>
-  x.length === 1 ? x[0] : intersection(x[0], intersectAll(x.slice(1)));
+const intersectAll = <T>(x: T[][]): T[] => {
+  if (x.length === 0) return [];
+  if (x.length === 1) return x[0];
+  return intersection(x[0], intersectAll(x.slice(1)));
+};
 
 const safeHead = (xs: string[]) => head(xs) || "";
 const splitInHalf = (x: string) => splitEvery(x.length / 2, x);
@@ -37,7 +41,7 @@ async function solvePart2(input: string): Promise<number> {
 
 export default {
   day: "03",
-  name: "Rucksack organization",
+  name: "Rucksack Reorganization",
   input: inputFile,
   solvePart1,
   solvePart2,
