@@ -2125,6 +2125,15 @@ eslint-plugin-jsx-a11y@^6.5.1, eslint-plugin-jsx-a11y@^6.6.1:
     minimatch "^3.1.2"
     semver "^6.3.0"
 
+eslint-plugin-ramda@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-ramda/-/eslint-plugin-ramda-2.5.1.tgz#36c2592300c383471aaac1ba26e9fca6f37a11b2"
+  integrity sha512-1Uuyl5hMiyBNsn1F0Px0q8hGX95HC6CAzaEBeKngwixXwsbw+j98U7fatxDME8lUKyLPXuO5Ulon2QOcwVDrxw==
+  dependencies:
+    create-eslint-index "^1.0.0"
+    ramda "0.25.0"
+    req-all "^1.0.0"
+
 eslint-plugin-react-hooks@^4.5.0:
   version "4.6.0"
   resolved "https://registry.npmjs.org/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.6.0.tgz"
@@ -4160,6 +4169,11 @@ quick-lru@^5.1.1:
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   integrity sha512-WuyALRjWPDGtt/wzJiadO5AXY+8hZ80hVpe6MyivgraREW751X3SbhRvG3eLKOYN+8VEvqLcf3wdnt44Z4S4SA==
 
+ramda@0.25.0:
+  version "0.25.0"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.25.0.tgz#8fdf68231cffa90bc2f9460390a0cb74a29b29a9"
+  integrity sha512-GXpfrYVPwx3K7RQ6aYT8KPS8XViSXUVJT1ONhoKPE9VAleW42YE+U+8VEyGWt41EnEQW7gwecYJriTI0pKoecQ==
+
 ramda@^0.28.0:
   version "0.28.0"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.28.0.tgz#acd785690100337e8b063cab3470019be427cc97"
@@ -4261,6 +4275,11 @@ req-all@^0.1.0:
   version "0.1.0"
   resolved "https://registry.npmjs.org/req-all/-/req-all-0.1.0.tgz"
   integrity sha512-ZdvPr8uXy9ujX3KujwE2P1HWkMYgogIhqeAeyb47MqWjSfyxERSm0TNbN/IapCCmWDufXab04AYrRgObaJCJ6Q==
+
+req-all@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/req-all/-/req-all-1.0.0.tgz#d128569451c340b432409c656cf166260cd2628d"
+  integrity sha512-k8RAnaq+vrezRAZWQlI6sbwGIlII699fnPYamb8K0UVgQel3Wb6YgPfpGyair00vmArXNag1vr5PjwDQBE7DUA==
 
 require-directory@^2.1.1:
   version "2.1.1"

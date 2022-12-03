@@ -2,14 +2,16 @@
   "extends": [
     "next/core-web-vitals",
     "plugin:jsx-a11y/recommended",
-    "plugin:fp/recommended"
+    "plugin:fp/recommended",
+    "plugin:ramda/recommended"
   ],
-  "plugins": ["fp", "jsx-a11y"],
+  "plugins": ["fp", "ramda", "jsx-a11y"],
   "env": {
     "browser": true
   },
   "rules": {
     "fp/no-unused-expression": "off",
+    "fp/no-rest-parameters": "off",
     "fp/no-nil": "off"
   },
   "ignorePatterns": [
