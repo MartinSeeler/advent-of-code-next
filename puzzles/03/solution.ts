@@ -5,9 +5,7 @@ import {
   take,
   drop,
   all,
-  contains,
   includes,
-  find,
   uniq,
   sum,
   slice,
@@ -22,7 +20,7 @@ const parseLines = (input: string): string[] =>
   input.split("\n").map((line) => line.trim());
 
 const charScore = (char: string): number =>
-  char.match(/[a-z]/) ? char.charCodeAt(0) - 96 : char.charCodeAt(0) - 38;
+  char.charCodeAt(0) - (char.match(/[a-z]/) ? 96 : 38);
 
 const window = <T>(n: number, list: T[]): T[][] =>
   isEmpty(list) ? [] : prepend(take(n, list), window(n, drop(n, list)));
