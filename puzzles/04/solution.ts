@@ -1,5 +1,5 @@
 import { Puzzle } from "@/lib/types";
-import { chain, count, flatten, map, pipe, split, sum, trim } from "ramda";
+import { chain, count, map, pipe, split, trim } from "ramda";
 import inputFile from "./input.txt";
 
 const conditionP1 = (xs: number[]) =>
