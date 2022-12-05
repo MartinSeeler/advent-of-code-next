@@ -12,6 +12,8 @@ const PuzzlePartResult: FC = () => {
     <span className="text-sm text-zinc-300">
       {puzzlePartStatus === "queued" || puzzlePartStatus === "running"
         ? "..."
+        : typeof puzzlePartResult === "string"
+        ? puzzlePartResult
         : puzzlePartResult === null || isNaN(puzzlePartResult)
         ? "No Result"
         : puzzlePartResult}

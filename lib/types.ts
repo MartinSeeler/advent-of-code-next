@@ -1,5 +1,5 @@
 export type PuzzleInput = string;
-export type PuzzleResult = number;
+export type PuzzleResult = number | string;
 
 export type SolvePuzzleFn = (_: PuzzleInput) => Promise<PuzzleResult>;
 export interface Puzzle {

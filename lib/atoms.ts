@@ -16,10 +16,12 @@ export const puzzlePartRunningState = atomFamily<boolean, string>({
   default: false,
 });
 
-export const puzzlePartResultState = atomFamily<number | null, string>({
-  key: "puzzlePartResult",
-  default: null,
-});
+export const puzzlePartResultState = atomFamily<number | string | null, string>(
+  {
+    key: "puzzlePartResult",
+    default: null,
+  }
+);
 
 export const puzzlePartTimeState = atomFamily<number | null, string>({
   key: "puzzlePartTime",

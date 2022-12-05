@@ -24,7 +24,11 @@ export const usePuzzleManager = () => {
     useRecoilState(currentlyRunningPuzzlePartState);
   const updatePuzzleResult = useRecoilCallback(
     ({ set }) =>
-      (puzzlePartId: string, result: number | null, error: Error | null) => {
+      (
+        puzzlePartId: string,
+        result: number | string | null,
+        error: Error | null
+      ) => {
         set(puzzlePartErrorState(puzzlePartId), error);
         set(puzzlePartResultState(puzzlePartId), result);
       }
@@ -56,7 +60,7 @@ export const usePuzzleManager = () => {
           .getPromise(customPuzzleInputState(puzzleToSolveNext.day))
           .then(async (customInput) => {
             const res = await solveFn(customInput || puzzleToSolveNext.input);
-            if (isNaN(res)) {
+            if (typeof res !== "string" && isNaN(res)) {
               // eslint-disable-next-line fp/no-throw
               throw new Error("Received NaN result");
             }
