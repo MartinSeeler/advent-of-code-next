@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://advent-of-code-next.vercel.app
+
+# Sitemaps
+Sitemap: https://advent-of-code-next.vercel.app/sitemap.xml
