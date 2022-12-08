@@ -1,6 +1,7 @@
 import { Puzzle } from "@/lib/types";
 import {
   all,
+  any,
   contains,
   equals,
   filter,
@@ -16,6 +17,8 @@ import {
   takeWhile,
   transpose,
   uniq,
+  unnest,
+  zip,
 } from "ramda";
 import inputFile from "./input.txt";
 
@@ -61,22 +64,18 @@ async function solvePart1(input: string): Promise<number> {
 
   const freeIndicesHor = filterFreeIndices(grid);
   const freeIndicesVer = transpose(filterFreeIndices(transpose(grid)));
-  const result = freeIndicesHor.map((row: boolean[], x: number) =>
-    row.map(
-      (visible: boolean, index: number) => visible || freeIndicesVer[x][index]
-    )
+
+  return (
+    length(
+      filter(
+        identity<boolean>,
+        map(
+          any(identity<boolean>),
+          zip(unnest(freeIndicesHor), unnest(freeIndicesVer))
+        )
+      )
+    ) + borderLength
   );
-
-  // ramda version to count all true values in matrix
-  const count = pipe(
-    // @ts-ignore
-    map(pipe(filter<boolean, boolean>(identity), length)),
-    sum
-    // @ts-ignore
-  )(result);
-  console.log(count);
-
-  return borderLength + count;
 }
 
 async function solvePart2(input: string): Promise<number> {
