@@ -55,7 +55,6 @@ const generateTree = (
         : currentDir === "/"
         ? `/${newDir}`
         : `${currentDir}/${newDir}`;
-    console.log("going", currentDir, "to", newDir, "=", nextDir);
     return generateTree(commands.slice(1), allFiles, nextDir);
   }
   return allFiles;
@@ -75,7 +74,6 @@ const parseAllDirs: (input: string) => DirSize[] = (input) => {
   const sizes: [string, number][] = Object.entries(byDir).map(
     ([dir, files]) => {
       const sum: number = files.reduce((acc, [_, __, size]) => acc + size, 0);
-      console.log(dir, sum);
       return [dir, sum];
     }
   );
