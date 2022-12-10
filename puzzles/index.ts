@@ -10,6 +10,7 @@ import puzzle06 from "./06/solution";
 import puzzle07 from "./07/solution";
 import puzzle08 from "./08/solution";
 import puzzle09 from "./09/solution";
+import puzzle10 from "./10/solution";
 
-export default [puzzle09, puzzle08, puzzle07, puzzle06, puzzle05, puzzle04, puzzle03, puzzle02, puzzle01, puzzle00] as Puzzle[];
+export default [puzzle10, puzzle09, puzzle08, puzzle07, puzzle06, puzzle05, puzzle04, puzzle03, puzzle02, puzzle01, puzzle00] as Puzzle[];
     
