@@ -37,7 +37,7 @@ async function solvePart2(input: string): Promise<string> {
   const [_, crt] = getInstructions(input).reduce(
     ([register, crt], x, idx) => {
       const [row, col] = [Math.floor(idx / 40), idx % 40];
-      const draw = inRange(register - 1, register + 2, col) ? "#" : ".";
+      const draw = inRange(register - 1, register + 2, col) ? "█" : " ";
       return [
         x.length === 1 ? register : register + parseInt(x[1], 10),
         set(lensIndex(row), set(lensIndex(col), draw, crt[row]), crt),
