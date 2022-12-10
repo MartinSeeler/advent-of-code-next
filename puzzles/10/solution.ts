@@ -45,7 +45,7 @@ async function solvePart2(input: string): Promise<string> {
     },
     [1, splitEvery(40, repeat(" ", 40 * 6))] as [number, string[][]]
   );
-  console.log("Puzzle 10 Part 2:\n", join("\n", map(join(""), crt)));
+  console.log("Puzzle 10 Part 2:", "\n" + join("\n", map(join(""), crt)));
   return "SEE CONSOLE";
 }
 
