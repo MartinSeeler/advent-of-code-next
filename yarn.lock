@@ -999,6 +999,11 @@
   resolved "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
+"@types/lcm@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@types/lcm/-/lcm-0.0.0.tgz#3635c72257cd5fb0eb43d4e15843c746144bb421"
+  integrity sha512-IEWAUS7GRjQpWEwnLoAyicmBuEJT5WrxRuG6g2K+ntX6GXLDsyOTAzDVDXTUQRAK1q/qcbFZNKNQNdtMmxQ5rw==
+
 "@types/node@*":
   version "18.11.9"
   resolved "https://registry.npmjs.org/@types/node/-/node-18.11.9.tgz"
@@ -2543,6 +2548,11 @@ functions-have-names@^1.2.2:
   resolved "https://registry.npmjs.org/functions-have-names/-/functions-have-names-1.2.3.tgz"
   integrity sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==
 
+gcd@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/gcd/-/gcd-0.0.1.tgz#41e0bb60bcc9245635419860a22544b230ba2f75"
+  integrity sha512-VNx3UEGr+ILJTiMs1+xc5SX1cMgJCrXezKPa003APUWNqQqaF6n25W8VcR7nHN6yRWbvvUTwCpZCFJeWC2kXlw==
+
 gensync@^1.0.0-beta.2:
   version "1.0.0-beta.2"
   resolved "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz"
@@ -3605,6 +3615,13 @@ language-tags@^1.0.5:
   integrity sha512-qJhlO9cGXi6hBGKoxEG/sKZDAHD5Hnu9Hs4WbOY3pCWXDhw0N8x1NenNzm2EnNLkLkk7J2SdxAkDSbb6ftT+UQ==
   dependencies:
     language-subtag-registry "~0.3.2"
+
+lcm@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/lcm/-/lcm-0.0.3.tgz#4a3b11ce0363e297010806080ffeca02f77f8280"
+  integrity sha512-TB+ZjoillV6B26Vspf9l2L/vKaRY/4ep3hahcyVkCGFgsTNRUQdc24bQeNFiZeoxH0vr5+7SfNRMQuPHv/1IrQ==
+  dependencies:
+    gcd "^0.0.1"
 
 leven@^3.1.0:
   version "3.1.0"
