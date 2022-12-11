@@ -74,13 +74,14 @@ const parseMonkeys = (input: string): Monkey[] =>
 
 const runMonkey = (monkey: Monkey, lcm: number): Transfer[] =>
   monkey.items.reduce((acc, item) => {
-    const result = monkey.op(item);
-    const result2 = lcm ? modulo(result, lcm) : floor(divide(result, 3));
+    const result = lcm
+      ? modulo(monkey.op(item), lcm)
+      : floor(divide(monkey.op(item), 3));
     return append(
       [
-        result2,
-        modulo(result2, monkey.test) ? monkey.falseMonkey : monkey.trueMonkey,
-      ] as Transfer,
+        result,
+        modulo(result, monkey.test) ? monkey.falseMonkey : monkey.trueMonkey,
+      ],
       acc
     );
   }, [] as Transfer[]);
@@ -96,19 +97,22 @@ const resetMonkey =
 const runMonkeys = (monkeys: Monkey[], lcm: number): Monkey[] =>
   monkeys.reduce((acc, _, idx) => {
     const transfers = runMonkey(view(lensIndex(idx), acc), lcm);
-    const appended = transfers.reduce(
-      (acc2, [item, monkeyIdx]) =>
-        over(lensIndex(monkeyIdx), over(lensProp("items"), append(item)), acc2),
-      acc
+    return over(
+      lensIndex(idx),
+      resetMonkey(length(transfers)),
+      transfers.reduce(
+        (acc2, [item, monkeyIdx]) =>
+          over(
+            lensIndex(monkeyIdx),
+            over(lensProp("items"), append(item)),
+            acc2
+          ),
+        acc
+      )
     );
-    return over(lensIndex(idx), resetMonkey(length(transfers)), appended);
   }, monkeys);
 
-const simulate = (
-  monkeys: Monkey[],
-  rounds: number,
-  lcm: number = 0
-): Monkey[] =>
+const simulate = (monkeys: Monkey[], rounds: number, lcm: number): Monkey[] =>
   reduce((acc, _) => runMonkeys(acc, lcm), monkeys, range(0, rounds));
 
 const monkeyBusiness = (monkeys: Monkey[]): number => {
@@ -117,7 +121,7 @@ const monkeyBusiness = (monkeys: Monkey[]): number => {
 };
 
 async function solvePart1(input: string): Promise<number> {
-  return monkeyBusiness(simulate(parseMonkeys(input), 20));
+  return monkeyBusiness(simulate(parseMonkeys(input), 20, 0));
 }
 
 async function solvePart2(input: string): Promise<number> {
