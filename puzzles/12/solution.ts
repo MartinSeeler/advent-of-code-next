@@ -9,7 +9,10 @@ import {
   map,
   minBy,
   over,
+  pipe,
   reduce,
+  values,
+  valuesIn,
 } from "ramda";
 import inputFile from "./input.txt";
 
@@ -18,10 +21,11 @@ type Grid<T> = T[][];
 type CharGrid = Grid<string>;
 type ElevationGrid = Grid<number>;
 
-const getSquareValue = (c: string) => {
-  const idx = indexOf(c, "abcdefghijklmnopqrstuvwxyz");
-  return idx > -1 ? idx : c === "S" ? 0 : 25;
-};
+const squareValue = (c: string) =>
+  indexOf(
+    c.replaceAll("S", "a").replaceAll("E", "z"),
+    "abcdefghijklmnopqrstuvwxyz"
+  );
 
 const parseGrid = (input: string): CharGrid =>
   input
@@ -39,9 +43,19 @@ const right = over(lensPath<Coord, 1>([1]), add(1));
 const up = over(lensPath<Coord, 0>([0]), add(-1));
 const down = over(lensPath<Coord, 0>([0]), add(1));
 
+const validRange: (grid: ElevationGrid) => (coord: Coord) => boolean =
+  (grid) =>
+  ([y, x]) =>
+    x >= 0 && y >= 0 && y < grid.length && x < grid[0].length;
+
 const getNeighbors = (grid: ElevationGrid, coord: Coord): Coord[] =>
-  [left(coord), right(coord), up(coord), down(coord)].filter(
-    ([y, x]) => x >= 0 && y >= 0 && y < grid.length && x < grid[0].length
+  [left(coord), right(coord), up(coord), down(coord)].filter(validRange(grid));
+
+const minBySteps = (xs: [Coord, number][]) =>
+  reduce(
+    minBy(([_, steps]) => steps),
+    xs[0],
+    xs
   );
 
 const bfs = (
@@ -71,23 +85,18 @@ const bfs = (
       .filter((coord) => valueAt(coord) <= valueAt(current) + 1)
       .map((coord) => [coord, steps + 1] as [Coord, number])
   );
-  const nextQueueByMinSteps: [Coord, number][] = Object.values(
-    map(
-      (xs: [Coord, number][]) =>
-        reduce(
-          minBy(([_, steps]) => steps),
-          xs[0],
-          xs
-        ),
-      groupBy(([coord, _]) => coord.toString(), nextQueue)
-    )
-  );
+  const nextQueueByMinSteps: [Coord, number][] = pipe(
+    groupBy<[Coord, number], string>(([coord, _]) => coord.toString()),
+    values,
+    map(minBySteps)
+  )(nextQueue);
+
   return bfs(grid, target, nextQueueByMinSteps, visitedNext);
 };
 
 async function solvePart1(input: string): Promise<number> {
   const charGrid: CharGrid = parseGrid(input);
-  const elevationGrid: ElevationGrid = charGrid.map(map(getSquareValue));
+  const elevationGrid: ElevationGrid = charGrid.map(map(squareValue));
   const starts = find(charGrid, "S");
   const end = find(charGrid, "E")[0];
   return bfs(elevationGrid, end, [[starts[0], 0]]);
@@ -95,7 +104,7 @@ async function solvePart1(input: string): Promise<number> {
 
 async function solvePart2(input: string): Promise<number> {
   const charGrid: CharGrid = parseGrid(input);
-  const elevationGrid: ElevationGrid = charGrid.map(map(getSquareValue));
+  const elevationGrid: ElevationGrid = charGrid.map(map(squareValue));
   const starts = find(charGrid, "a");
   const end = find(charGrid, "E")[0];
   return bfs(
