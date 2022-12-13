@@ -1,16 +1,5 @@
 import { Puzzle } from "@/lib/types";
-import {
-  all,
-  head,
-  map,
-  range,
-  sort,
-  split,
-  splitAt,
-  sum,
-  takeWhile,
-  zip,
-} from "ramda";
+import { head, sort, split, sum } from "ramda";
 import { isArray, isNumber } from "ramda-adjunct";
 import inputFile from "./input.txt";
 
@@ -25,27 +14,16 @@ type EvalResult = "ordered" | "unordered" | "unsure";
 
 const checkOrder = ([left, right]: [Val, Val]): EvalResult => {
   if (isNumber(left) && isNumber(right)) {
-    if (left < right) {
-      return "ordered";
-    }
-    if (left > right) {
-      return "unordered";
-    }
-    return "unsure";
+    return left === right ? "unsure" : left < right ? "ordered" : "unordered";
   }
   if (isArray(left) && isArray(right)) {
     if (left.length === 0 && right.length === 0) {
       return "unsure";
     }
-    if (left.length === 0) {
-      return "ordered";
+    if (left.length === 0 || right.length === 0) {
+      return left.length === 0 ? "ordered" : "unordered";
     }
-    if (right.length === 0) {
-      return "unordered";
-    }
-    const leftHead = head(left)!;
-    const rightHead = head(right)!;
-    const headRes = checkOrder([leftHead, rightHead]);
+    const headRes = checkOrder([head(left)!, head(right)!]);
     return headRes === "unsure"
       ? checkOrder([left.slice(1), right.slice(1)])
       : headRes;
