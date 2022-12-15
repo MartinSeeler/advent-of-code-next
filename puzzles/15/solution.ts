@@ -28,6 +28,8 @@ const parseScans = (input: string): Scan[] =>
     return { pos: pos1, beacon: pos2, distance } as Scan;
   });
 
+// TODO: check https://github.com/TilenPogacnik/advent-of-code-2022/blob/main/src/day15/solution.js
+
 async function solvePart1(input: string): Promise<number> {
   const scans = parseScans(input);
   const minX = Math.min(...scans.flatMap((x) => [x.beacon[0]]));
@@ -51,25 +53,24 @@ async function solvePart1(input: string): Promise<number> {
 async function solvePart2(input: string): Promise<number> {
   const scans = parseScans(input);
 
-  const calculateRing = ([x, y]: Pos, distance: number): Pos[] => {
-    const ring: Pos[] = [];
-    for (let i = 0; i <= distance; i++) {
-      ring.push([x + i, y + distance - i]);
-      ring.push([x + i, y - distance + i]);
-      ring.push([x - i, y + distance - i]);
-      ring.push([x - i, y - distance + i]);
-    }
-    return ring;
-  };
+  const calculateDiamond = ([x, y]: Pos, distance: number): Pos[] =>
+    range(0, distance + 1).map((i) => [x + i, y + distance - i] as Pos);
 
   const limit = 4000000;
 
   const rings = uniq(
-    unnest(scans.map((scan) => calculateRing(scan.pos, scan.distance + 1)))
-      .filter(([x, y]) => x >= 0 && y >= 0 && x <= limit && y <= limit)
-      .filter((pos) =>
-        all((scan) => manhattenDistance(pos, scan.pos) > scan.distance, scans)
+    unnest(
+      scans.map((scan) =>
+        calculateDiamond(scan.pos, scan.distance + 1)
+          .filter(([x, y]) => x >= 0 && y >= 0 && x <= limit && y <= limit)
+          .filter((pos) =>
+            all(
+              (scan) => manhattenDistance(pos, scan.pos) > scan.distance,
+              scans
+            )
+          )
       )
+    )
   );
   return rings[0][0] * 4000000 + rings[0][1];
 }
