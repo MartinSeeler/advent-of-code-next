@@ -1,8 +1,16 @@
-/* eslint-disable fp/no-mutation */
-/* eslint-disable fp/no-let */
-/* eslint-disable fp/no-mutating-methods */
-/* eslint-disable fp/no-loops */
-import { all, any, map, range, sum, uniq, unnest } from "ramda";
+import {
+  all,
+  any,
+  chain,
+  compose,
+  filter,
+  map,
+  range,
+  sum,
+  tap,
+  take,
+  transduce,
+} from "ramda";
 import { Puzzle } from "@/lib/types";
 import inputFile from "./input.txt";
 
@@ -17,16 +25,20 @@ const manhattenDistance = ([x1, y1]: Pos, [x2, y2]: Pos): number =>
   Math.abs(x1 - x2) + Math.abs(y1 - y2);
 
 const parseScans = (input: string): Scan[] =>
-  input.split("\n").map((line) => {
-    const [x1, y1, x2, y2] = line
-      .split(" ")
-      .filter((x) => x.includes("="))
-      .map((x) => parseInt(x.split("=")[1], 10));
-    const pos1: Pos = [x1, y1];
-    const pos2: Pos = [x2, y2];
-    const distance = manhattenDistance(pos1, pos2);
-    return { pos: pos1, beacon: pos2, distance } as Scan;
-  });
+  input
+    .trim()
+    .split("\n")
+    .map((line) => {
+      const [x1, y1, x2, y2] = line
+        .trim()
+        .split(" ")
+        .filter((x) => x.includes("="))
+        .map((x) => parseInt(x.split("=")[1], 10));
+      const pos1: Pos = [x1, y1];
+      const pos2: Pos = [x2, y2];
+      const distance = manhattenDistance(pos1, pos2);
+      return { pos: pos1, beacon: pos2, distance } as Scan;
+    });
 
 // TODO: check https://github.com/TilenPogacnik/advent-of-code-2022/blob/main/src/day15/solution.js
 
@@ -52,27 +64,34 @@ async function solvePart1(input: string): Promise<number> {
 
 async function solvePart2(input: string): Promise<number> {
   const scans = parseScans(input);
+  console.log(scans.length, "scans");
 
   const calculateDiamond = ([x, y]: Pos, distance: number): Pos[] =>
     range(0, distance + 1).map((i) => [x + i, y + distance - i] as Pos);
 
   const limit = 4000000;
 
-  const rings = uniq(
-    unnest(
-      scans.map((scan) =>
-        calculateDiamond(scan.pos, scan.distance + 1)
-          .filter(([x, y]) => x >= 0 && y >= 0 && x <= limit && y <= limit)
-          .filter((pos) =>
-            all(
-              (scan) => manhattenDistance(pos, scan.pos) > scan.distance,
-              scans
-            )
-          )
-      )
-    )
+  const scanToEdge = (scan: Scan): Pos[] =>
+    calculateDiamond(scan.pos, scan.distance + 1);
+
+  // const log = (name: string) => (x: any) => console.log(name, x);
+  // @ts-ignore
+  const firstOddTransducer = compose(
+    chain(scanToEdge),
+    filter<Pos>(([x, y]) => x >= 0 && y >= 0 && x <= limit && y <= limit),
+    filter<Pos>((pos) =>
+      all((scan) => manhattenDistance(pos, scan.pos) > scan.distance, scans)
+    ),
+    // tap(log("d")),
+    take(1)
   );
-  return rings[0][0] * 4000000 + rings[0][1];
+  const res: number = transduce(
+    firstOddTransducer,
+    (sum: number, pos: Pos) => sum + (pos[0] * limit + pos[1]),
+    0,
+    scans
+  );
+  return res;
 }
 
 export default {
