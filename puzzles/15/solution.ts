@@ -10,6 +10,7 @@ import {
   tap,
   take,
   transduce,
+  sort,
 } from "ramda";
 import { Puzzle } from "@/lib/types";
 import inputFile from "./input.txt";
@@ -67,7 +68,7 @@ async function solvePart2(input: string): Promise<number> {
   console.log(scans.length, "scans");
 
   const calculateDiamond = ([x, y]: Pos, distance: number): Pos[] =>
-    range(0, distance + 1).map((i) => [x + i, y + distance - i] as Pos);
+    range(0, distance + 1).map((i) => [x + i, y - distance + i] as Pos);
 
   const limit = 4000000;
 
