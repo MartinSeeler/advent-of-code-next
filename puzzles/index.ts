@@ -16,6 +16,7 @@ import puzzle12 from "./12/solution";
 import puzzle13 from "./13/solution";
 import puzzle14 from "./14/solution";
 import puzzle15 from "./15/solution";
+import puzzle16 from "./16/solution";
 
-export default [puzzle15, puzzle14, puzzle13, puzzle12, puzzle11, puzzle10, puzzle09, puzzle08, puzzle07, puzzle06, puzzle05, puzzle04, puzzle03, puzzle02, puzzle01, puzzle00] as Puzzle[];
+export default [puzzle16, puzzle15, puzzle14, puzzle13, puzzle12, puzzle11, puzzle10, puzzle09, puzzle08, puzzle07, puzzle06, puzzle05, puzzle04, puzzle03, puzzle02, puzzle01, puzzle00] as Puzzle[];
     

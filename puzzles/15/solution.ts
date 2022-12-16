@@ -7,10 +7,8 @@ import {
   map,
   range,
   sum,
-  tap,
   take,
   transduce,
-  sort,
 } from "ramda";
 import { Puzzle } from "@/lib/types";
 import inputFile from "./input.txt";
@@ -75,7 +73,6 @@ async function solvePart2(input: string): Promise<number> {
   const scanToEdge = (scan: Scan): Pos[] =>
     calculateDiamond(scan.pos, scan.distance + 1);
 
-  // const log = (name: string) => (x: any) => console.log(name, x);
   // @ts-ignore
   const firstOddTransducer = compose(
     chain(scanToEdge),
@@ -83,7 +80,6 @@ async function solvePart2(input: string): Promise<number> {
     filter<Pos>((pos) =>
       all((scan) => manhattenDistance(pos, scan.pos) > scan.distance, scans)
     ),
-    // tap(log("d")),
     take(1)
   );
   const res: number = transduce(
