@@ -140,9 +140,9 @@ const play = memoizeWith(
           ...(isUnopenedRelevantValve ? [openValve(state.currentValve)] : []),
           // go to each next unopened relevant valve
           ...state.cave[state.currentValve].tunnels
-            .filter((x) => x[0] !== state.currentValve)
-            .filter((x) => !state.openValves.includes(x[0]))
-            .filter((x) => x[1] + state.minute <= limit)
+            .filter(([nextValve]) => nextValve !== state.currentValve)
+            .filter(([nextValve]) => !state.openValves.includes(nextValve))
+            .filter(([_, minDistance]) => minDistance + state.minute <= limit)
             .map((x) => moveToValve(x)),
           stay(limit - state.minute),
         ]
