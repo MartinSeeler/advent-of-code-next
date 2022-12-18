@@ -9,7 +9,6 @@ import {
   equals,
   flip,
   gte,
-  has,
   Lens,
   lensIndex,
   lte,
@@ -19,6 +18,7 @@ import {
   over,
   pipe,
   range,
+  values,
   view,
 } from "ramda";
 import inputFile from "./input.txt";
@@ -105,29 +105,88 @@ const getVector =
   (world: Set<string>): number[] =>
     range(0, 7)
       .map((x) => [x, y] as Coord)
-      .map((coord) => (!world.has(coordToStr(coord)) ? 1 : 0));
+      .map((coord) => (world.has(coordToStr(coord)) ? 1 : 0));
 
 const play = (input: string, rounds: number): number => {
   let rockIdx = 0;
   let windIdx = 0;
   let maxH = 0;
-  const pushes = input.split("").map((x) => Moves[MoveChars.indexOf(x)]);
   let worldString = new Set<string>();
-  let currentRock = pipe(moveUp(3 + maxH), moveRight(2))(Rocks[rockIdx]);
   let stopped = false;
   let finalHeightOffset = 0;
+  let seenCache: { [key: string]: number } = {};
+
+  const winds = input.split("");
+  const windMoves = winds.map((x) => Moves[MoveChars.indexOf(x)]);
+  let currentRock = pipe(moveUp(3 + maxH), moveRight(2))(Rocks[rockIdx]);
+
+  let hStart = 0;
+  let hEnd = 0;
+  let cycleStartFound = false;
+  let cycleEndFound = false;
+  let sIdxStart = 0;
+  let sIdxEnd = 0;
+  let hDiff = 0;
+  let sIdxDiff = 0;
+
+  let remaining = 99999999999;
+
   while (!stopped) {
-    const pushedShape = pushes[windIdx % pushes.length](currentRock);
+    const pushedRock = windMoves[windIdx % windMoves.length](currentRock);
     windIdx++;
-    if (isValid(worldString)(pushedShape)) {
-      currentRock = pushedShape;
+    if (isValid(worldString)(pushedRock)) {
+      currentRock = pushedRock;
     }
-    const downShape = moveDown(1)(currentRock);
-    const shapeBeforeDown = currentRock;
-    if (isValid(worldString)(downShape)) {
-      currentRock = downShape;
+    const rockBeforeDown = currentRock;
+    const rockAfterDown = moveDown(1)(currentRock);
+    if (isValid(worldString)(rockAfterDown)) {
+      currentRock = rockAfterDown;
     }
-    if (equals(currentRock, shapeBeforeDown)) {
+    if (equals(currentRock, rockBeforeDown)) {
+      const cacheKey =
+        range(1, 2)
+          .flatMap((x) => getVector(maxH - x)(worldString))
+          .join("") +
+        winds[windIdx % winds.length] +
+        (rockIdx % Rocks.length);
+      seenCache[cacheKey]
+        ? (seenCache[cacheKey] += 1)
+        : (seenCache[cacheKey] = 1);
+
+      const multiCacheKeys = values(seenCache).filter((x) => x > 1);
+      if (
+        !cycleStartFound &&
+        all((x) => x >= 3, multiCacheKeys) &&
+        multiCacheKeys.length > 1
+      ) {
+        console.log("cycle start");
+        cycleStartFound = true;
+        hStart = maxH;
+        sIdxStart = rockIdx;
+      }
+
+      if (
+        cycleStartFound &&
+        !cycleEndFound &&
+        all((x) => x >= 4, multiCacheKeys) &&
+        multiCacheKeys.length > 1
+      ) {
+        cycleEndFound = true;
+        hEnd = maxH;
+        sIdxEnd = rockIdx;
+        hDiff = hEnd - hStart;
+        sIdxDiff = sIdxEnd - sIdxStart;
+        remaining =
+          rounds %
+          (Math.floor((rounds - rockIdx) / sIdxDiff) * sIdxDiff + rockIdx);
+        finalHeightOffset = Math.floor((rounds - rockIdx) / sIdxDiff) * hDiff;
+        console.log("cycle", hDiff, sIdxDiff, rockIdx, remaining);
+        stopped = true;
+        if (remaining === 0) {
+          return maxH + finalHeightOffset;
+        }
+      }
+
       worldString = new Set([
         ...worldString,
         ...currentRock.map((x) => x.join(",")),
@@ -139,10 +198,13 @@ const play = (input: string, rounds: number): number => {
         moveUp(3 + maxH),
         moveRight(2)
       )(Rocks[rockIdx % Rocks.length]);
-      stopped = rockIdx >= rounds;
+      if (cycleEndFound) {
+        remaining--;
+      }
+      stopped = cycleEndFound ? remaining <= 0 : rockIdx >= rounds;
+      // console.log(cacheKey);
     }
   }
-  console.log("maxH", maxH);
   return maxH + finalHeightOffset;
 };
 
@@ -151,7 +213,7 @@ async function solvePart1(input: string): Promise<number> {
 }
 
 async function solvePart2(input: string): Promise<number> {
-  return play(input, -1);
+  return play(input, 1000000000000);
 }
 
 export default {
